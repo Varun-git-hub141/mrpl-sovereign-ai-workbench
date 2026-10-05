@@ -1,0 +1,52 @@
+{
+  "formula_id": "FLOW-003",
+  "formula_name": "Pipe Internal Cross-Sectional Area",
+  "category": "flow",
+  "description": "Calculates internal cross-sectional flow area of pipe in cm2.",
+  "mathematical_expression": "Area_cm2 = (3.14159265 * (diameter_mm / 10.0)^2) / 4.0",
+  "formula": "(3.14159265 * (diameter_mm / 10.0)**2) / 4.0",
+  "required_inputs": [
+    "diameter_mm"
+  ],
+  "optional_inputs": [],
+  "output": "pipe_area_cm2",
+  "input_units": {
+    "diameter_mm": "mm"
+  },
+  "output_units": {
+    "pipe_area_cm2": "cm2"
+  },
+  "output_unit": "cm2",
+  "applicable_equipment_classes": [
+    "piping",
+    "pipeline",
+    "control_valve"
+  ],
+  "applicable_component_classes": [
+    "pipe_bore"
+  ],
+  "applicability_conditions": [
+    "Circular cross-section"
+  ],
+  "applicability": [
+    "inside diameter known"
+  ],
+  "non_applicability_conditions": [
+    "diameter <= 0"
+  ],
+  "not_applicable_when": [
+    "diameter <= 0"
+  ],
+  "assumptions": [
+    "Circular geometry"
+  ],
+  "input_validation_rules": [
+    "diameter_mm > 0"
+  ],
+  "calculation_method": "deterministic_geometry",
+  "source_reference": "Standard Geometric Principles \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

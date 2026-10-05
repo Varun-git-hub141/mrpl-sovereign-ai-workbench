@@ -1,0 +1,47 @@
+{
+  "formula_id": "UNIT-002",
+  "formula_name": "Pressure Unit Conversion (Bar to Megapascals)",
+  "category": "units",
+  "description": "Converts pressure from bar to Megapascals (MPa).",
+  "mathematical_expression": "P_MPa = P_bar * 0.1",
+  "formula": "P_bar * 0.1",
+  "required_inputs": [
+    "P_bar"
+  ],
+  "optional_inputs": [],
+  "output": "P_MPa",
+  "input_units": {
+    "P_bar": "bar"
+  },
+  "output_units": {
+    "P_MPa": "MPa"
+  },
+  "output_unit": "MPa",
+  "applicable_equipment_classes": [
+    "piping",
+    "pressure_vessel",
+    "pump",
+    "valve"
+  ],
+  "applicable_component_classes": [
+    "all"
+  ],
+  "applicability_conditions": [
+    "Pressure in bar"
+  ],
+  "applicability": [
+    "pressure in bar"
+  ],
+  "non_applicability_conditions": [],
+  "not_applicable_when": [],
+  "assumptions": [
+    "1 bar = 0.1 MPa = 100 kPa"
+  ],
+  "input_validation_rules": [],
+  "calculation_method": "deterministic_multiplication",
+  "source_reference": "SI Unit Conversions \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

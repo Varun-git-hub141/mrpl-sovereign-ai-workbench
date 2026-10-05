@@ -1,0 +1,68 @@
+{
+  "formula_id": "PV-001",
+  "formula_name": "ASME Section VIII Div 1 Cylindrical Shell Thickness",
+  "category": "vessels",
+  "description": "Calculates required thickness of cylindrical pressure vessel shell under internal pressure per ASME VIII Div 1.",
+  "mathematical_expression": "t = (P * R) / (S * E - 0.6 * P) + corrosion_allowance",
+  "formula": "(P * R) / (S * E - 0.6 * P) + corrosion_allowance",
+  "required_inputs": [
+    "P",
+    "R",
+    "S",
+    "E",
+    "corrosion_allowance"
+  ],
+  "optional_inputs": [],
+  "output": "required_shell_thickness",
+  "input_units": {
+    "P": "MPa",
+    "R": "mm",
+    "S": "MPa",
+    "E": "factor",
+    "corrosion_allowance": "mm"
+  },
+  "output_units": {
+    "required_shell_thickness": "mm"
+  },
+  "output_unit": "mm",
+  "applicable_equipment_classes": [
+    "pressure_vessel",
+    "column",
+    "drum",
+    "reactor"
+  ],
+  "applicable_component_classes": [
+    "cylindrical_shell"
+  ],
+  "applicability_conditions": [
+    "t <= 0.5 * R or P <= 0.385 * S * E (thin wall assumption per UG-27)"
+  ],
+  "applicability": [
+    "design pressure, radius, allowable stress, joint efficiency known"
+  ],
+  "non_applicability_conditions": [
+    "Thick wall vessels (t > 0.5 R) where Lam\u00e9 equations govern",
+    "External pressure buckling"
+  ],
+  "not_applicable_when": [
+    "t > 0.5 * R",
+    "external pressure service"
+  ],
+  "assumptions": [
+    "ASME UG-27 thin cylindrical shell hoop stress formula"
+  ],
+  "input_validation_rules": [
+    "P > 0",
+    "R > 0",
+    "S > 0",
+    "E > 0",
+    "E <= 1.0",
+    "(S * E - 0.6 * P) > 0"
+  ],
+  "calculation_method": "deterministic_asme_ug27",
+  "source_reference": "ASME Section VIII Division 1 UG-27(c)(1) \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": true,
+  "requires_human_review": true
+}

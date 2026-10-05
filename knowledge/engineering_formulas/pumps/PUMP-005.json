@@ -1,0 +1,53 @@
+{
+  "formula_id": "PUMP-005",
+  "formula_name": "NPSH Cavitation Margin Ratio",
+  "category": "pumps",
+  "description": "Calculates ratio of NPSHa to NPSHr. Ratio < 1.0 indicates severe cavitation threat.",
+  "mathematical_expression": "Margin_NPSH = npsha / npshr",
+  "formula": "npsha / npshr",
+  "required_inputs": [
+    "npsha",
+    "npshr"
+  ],
+  "optional_inputs": [],
+  "output": "npsh_margin_ratio",
+  "input_units": {
+    "npsha": "m",
+    "npshr": "m"
+  },
+  "output_units": {
+    "npsh_margin_ratio": "ratio"
+  },
+  "output_unit": "ratio",
+  "applicable_equipment_classes": [
+    "pump"
+  ],
+  "applicable_component_classes": [
+    "impeller"
+  ],
+  "applicability_conditions": [
+    "NPSHr from pump manufacturer performance curve"
+  ],
+  "applicability": [
+    "both NPSHa and NPSHr available"
+  ],
+  "non_applicability_conditions": [
+    "npshr <= 0"
+  ],
+  "not_applicable_when": [
+    "npshr <= 0"
+  ],
+  "assumptions": [
+    "API 610 recommends margin >= 1.1x or 1.0 m whichever is larger"
+  ],
+  "input_validation_rules": [
+    "npsha >= 0",
+    "npshr > 0"
+  ],
+  "calculation_method": "deterministic_division",
+  "source_reference": "Hydraulic Institute 9.6.1 \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": true,
+  "requires_human_review": true
+}

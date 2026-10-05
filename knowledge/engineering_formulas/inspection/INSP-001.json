@@ -1,0 +1,61 @@
+{
+  "formula_id": "INSP-001",
+  "formula_name": "API 570 Maximum Half-Life Inspection Interval",
+  "category": "inspection",
+  "description": "Calculates maximum statutory interval for next ultrasonic inspection (lesser of 1/2 remaining life or statutory cap).",
+  "mathematical_expression": "Interval = min(remaining_life / 2.0, statutory_cap_years)",
+  "formula": "min(remaining_life / 2.0, statutory_cap_years)",
+  "required_inputs": [
+    "remaining_life",
+    "statutory_cap_years"
+  ],
+  "optional_inputs": [
+    "piping_class"
+  ],
+  "output": "max_inspection_interval",
+  "input_units": {
+    "remaining_life": "years",
+    "statutory_cap_years": "years"
+  },
+  "output_units": {
+    "max_inspection_interval": "years"
+  },
+  "output_unit": "years",
+  "applicable_equipment_classes": [
+    "piping",
+    "pressure_vessel",
+    "storage_tank",
+    "pump"
+  ],
+  "applicable_component_classes": [
+    "piping_circuit",
+    "vessel_body"
+  ],
+  "applicability_conditions": [
+    "Remaining life > 0",
+    "Piping classification established (Class 1 = 5 yrs, Class 2 = 10 yrs)"
+  ],
+  "applicability": [
+    "remaining life verified",
+    "piping service class known"
+  ],
+  "non_applicability_conditions": [
+    "Equipment already below retirement thickness (t_curr <= t_min)"
+  ],
+  "not_applicable_when": [
+    "RL <= 0"
+  ],
+  "assumptions": [
+    "API 570 half-life interval safeguard criteria"
+  ],
+  "input_validation_rules": [
+    "remaining_life > 0",
+    "statutory_cap_years > 0"
+  ],
+  "calculation_method": "deterministic_min",
+  "source_reference": "API 570 Section 6.3 / API 510 Section 6.5 \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": true,
+  "requires_human_review": false
+}

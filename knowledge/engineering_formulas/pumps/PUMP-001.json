@@ -1,0 +1,59 @@
+{
+  "formula_id": "PUMP-001",
+  "formula_name": "Pump Hydraulic Liquid Power",
+  "category": "pumps",
+  "description": "Calculates hydraulic power imparted to liquid by centrifugal pump.",
+  "mathematical_expression": "P_hyd = (flow_rate_m3hr * density * 9.80665 * head_m) / 3600000",
+  "formula": "(flow_rate_m3hr * density * 9.80665 * head_m) / 3600000",
+  "required_inputs": [
+    "flow_rate_m3hr",
+    "density",
+    "head_m"
+  ],
+  "optional_inputs": [],
+  "output": "hydraulic_power",
+  "input_units": {
+    "flow_rate_m3hr": "m3/hr",
+    "density": "kg/m3",
+    "head_m": "m"
+  },
+  "output_units": {
+    "hydraulic_power": "kW"
+  },
+  "output_unit": "kW",
+  "applicable_equipment_classes": [
+    "pump"
+  ],
+  "applicable_component_classes": [
+    "centrifugal_pump",
+    "positive_displacement_pump"
+  ],
+  "applicability_conditions": [
+    "Steady-state flow through pump"
+  ],
+  "applicability": [
+    "centrifugal pump flow, density, head available"
+  ],
+  "non_applicability_conditions": [
+    "Zero density or negative head"
+  ],
+  "not_applicable_when": [
+    "flow <= 0",
+    "density <= 0",
+    "head <= 0"
+  ],
+  "assumptions": [
+    "Incompressible single-phase liquid"
+  ],
+  "input_validation_rules": [
+    "flow_rate_m3hr > 0",
+    "density > 0",
+    "head_m > 0"
+  ],
+  "calculation_method": "deterministic_multiplication",
+  "source_reference": "API 610 12th Edition / Hydraulic Institute \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

@@ -1,0 +1,61 @@
+{
+  "formula_id": "HT-001",
+  "formula_name": "Sensible Heat Thermal Duty",
+  "category": "heat_transfer",
+  "description": "Calculates thermal duty transferred to/from a liquid stream experiencing sensible temperature change.",
+  "mathematical_expression": "Q_kW = (mass_flow_kghr * specific_heat_kJkgC * delta_T_C) / 3600.0",
+  "formula": "(mass_flow_kghr * specific_heat_kJkgC * delta_T_C) / 3600.0",
+  "required_inputs": [
+    "mass_flow_kghr",
+    "specific_heat_kJkgC",
+    "delta_T_C"
+  ],
+  "optional_inputs": [],
+  "output": "thermal_duty_kW",
+  "input_units": {
+    "mass_flow_kghr": "kg/hr",
+    "specific_heat_kJkgC": "kJ/kg-C",
+    "delta_T_C": "C"
+  },
+  "output_units": {
+    "thermal_duty_kW": "kW"
+  },
+  "output_unit": "kW",
+  "applicable_equipment_classes": [
+    "heat_exchanger",
+    "furnace",
+    "reboiler",
+    "condenser"
+  ],
+  "applicable_component_classes": [
+    "tube_side",
+    "shell_side",
+    "coil"
+  ],
+  "applicability_conditions": [
+    "Single-phase sensible heating/cooling (no phase change latent heat)"
+  ],
+  "applicability": [
+    "mass flow, specific heat, temp difference available"
+  ],
+  "non_applicability_conditions": [
+    "Boiling or condensing streams without latent heat term"
+  ],
+  "not_applicable_when": [
+    "two-phase vaporization occurs"
+  ],
+  "assumptions": [
+    "Constant Cp over the specified temperature range"
+  ],
+  "input_validation_rules": [
+    "mass_flow_kghr >= 0",
+    "specific_heat_kJkgC > 0",
+    "delta_T_C >= 0"
+  ],
+  "calculation_method": "deterministic_thermal",
+  "source_reference": "TEMA Standards / API 660 \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

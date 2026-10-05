@@ -1,0 +1,10 @@
+{
+  "tag": "PCV-101",
+  "type": "control_valve",
+  "description": "Pneumatic Diaphragm Pressure Control Valve (8\" Class 300#)",
+  "fail_action": "FAIL_CLOSED",
+  "function": "Modulates feed delivery pressure to crude pre-heat train governed by DCS loop PIC-101",
+  "consequence_of_failure_closed": "Pump discharge deadheads, pressure surges to shutoff (~11.8 barg), lifting PSV-101 at 9.0 barg to flare",
+  "source": "Drawing CDU-P-101 Rev 2",
+  "version": "1.0.0"
+}

@@ -1,0 +1,58 @@
+{
+  "formula_id": "PUMP-003",
+  "formula_name": "Centrifugal Pump Total Dynamic Head (TDH)",
+  "category": "pumps",
+  "description": "Calculates total head generated from suction and discharge pressure readings.",
+  "mathematical_expression": "TDH = ((discharge_pressure_bar - suction_pressure_bar) * 100000) / (density * 9.80665)",
+  "formula": "((discharge_pressure_bar - suction_pressure_bar) * 100000) / (density * 9.80665)",
+  "required_inputs": [
+    "discharge_pressure_bar",
+    "suction_pressure_bar",
+    "density"
+  ],
+  "optional_inputs": [
+    "gauge_elevation_correction_m"
+  ],
+  "output": "total_dynamic_head",
+  "input_units": {
+    "discharge_pressure_bar": "bar",
+    "suction_pressure_bar": "bar",
+    "density": "kg/m3"
+  },
+  "output_units": {
+    "total_dynamic_head": "m"
+  },
+  "output_unit": "m",
+  "applicable_equipment_classes": [
+    "pump"
+  ],
+  "applicable_component_classes": [
+    "centrifugal_pump_impeller"
+  ],
+  "applicability_conditions": [
+    "discharge_pressure > suction_pressure",
+    "Liquid density known"
+  ],
+  "applicability": [
+    "suction & discharge pressures recorded"
+  ],
+  "non_applicability_conditions": [
+    "discharge <= suction pressure (pump not generating head)"
+  ],
+  "not_applicable_when": [
+    "discharge_pressure_bar <= suction_pressure_bar"
+  ],
+  "assumptions": [
+    "Velocity head difference between suction and discharge nozzles is negligible compared to static pressure rise"
+  ],
+  "input_validation_rules": [
+    "discharge_pressure_bar > suction_pressure_bar",
+    "density > 0"
+  ],
+  "calculation_method": "deterministic_head",
+  "source_reference": "API 610 12th Ed \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

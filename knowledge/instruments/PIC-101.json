@@ -1,0 +1,11 @@
+{
+  "tag": "PIC-101",
+  "type": "pressure_controller",
+  "description": "DCS Pressure Indicating Controller on P-101 discharge header",
+  "setpoint_barg": 6.0,
+  "alarm_high_barg": 8.2,
+  "controlled_element": "PCV-101",
+  "difference_from_PI101": "PIC-101 is an active closed-loop electronic DCS controller modulating PCV-101, whereas PI-101 is a local direct-reading pressure indicator on pump suction spool",
+  "source": "Drawing CDU-P-101 Rev 2",
+  "version": "1.0.0"
+}

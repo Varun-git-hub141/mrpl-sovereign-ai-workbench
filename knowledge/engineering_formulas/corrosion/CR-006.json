@@ -1,0 +1,65 @@
+{
+  "formula_id": "CR-006",
+  "formula_name": "Projected Future Wall Thickness",
+  "category": "corrosion",
+  "description": "Projects wall thickness at a specified future date assuming constant linear corrosion rate.",
+  "mathematical_expression": "T_future = current_thickness - (corrosion_rate * forecast_years)",
+  "formula": "current_thickness - (corrosion_rate * forecast_years)",
+  "required_inputs": [
+    "current_thickness",
+    "corrosion_rate",
+    "forecast_years"
+  ],
+  "optional_inputs": [
+    "process_acceleration_factor"
+  ],
+  "output": "projected_thickness",
+  "input_units": {
+    "current_thickness": "mm",
+    "corrosion_rate": "mm/year",
+    "forecast_years": "years"
+  },
+  "output_units": {
+    "projected_thickness": "mm"
+  },
+  "output_unit": "mm",
+  "applicable_equipment_classes": [
+    "piping",
+    "pressure_vessel",
+    "storage_tank",
+    "pump"
+  ],
+  "applicable_component_classes": [
+    "pipe",
+    "casing",
+    "shell"
+  ],
+  "applicability_conditions": [
+    "Verified active corrosion rate",
+    "forecast_years within remaining life envelope"
+  ],
+  "applicability": [
+    "active corrosion rate known",
+    "forecast interval defined"
+  ],
+  "non_applicability_conditions": [
+    "Severe episodic corrosion where linear extrapolation is invalid"
+  ],
+  "not_applicable_when": [
+    "corrosion mechanism changes"
+  ],
+  "assumptions": [
+    "Process chemistry and temperature remain stable"
+  ],
+  "input_validation_rules": [
+    "current_thickness > 0",
+    "corrosion_rate >= 0",
+    "forecast_years > 0"
+  ],
+  "calculation_method": "deterministic_linear_forecast",
+  "source_reference": "API 570 Section 7.1 \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

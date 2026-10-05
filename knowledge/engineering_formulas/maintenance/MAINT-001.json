@@ -1,0 +1,56 @@
+{
+  "formula_id": "MAINT-001",
+  "formula_name": "Mean Time to Repair (MTTR)",
+  "category": "maintenance",
+  "description": "Calculates average corrective maintenance hours spent per repair event.",
+  "mathematical_expression": "MTTR = total_downtime_hours / number_of_repairs",
+  "formula": "total_downtime_hours / number_of_repairs",
+  "required_inputs": [
+    "total_downtime_hours",
+    "number_of_repairs"
+  ],
+  "optional_inputs": [],
+  "output": "mttr_hours",
+  "input_units": {
+    "total_downtime_hours": "hours",
+    "number_of_repairs": "count"
+  },
+  "output_units": {
+    "mttr_hours": "hours"
+  },
+  "output_unit": "hours",
+  "applicable_equipment_classes": [
+    "pump",
+    "compressor",
+    "valve",
+    "instrument"
+  ],
+  "applicable_component_classes": [
+    "mechanical_equipment"
+  ],
+  "applicability_conditions": [
+    "At least one completed corrective maintenance repair"
+  ],
+  "applicability": [
+    "repair time logs recorded"
+  ],
+  "non_applicability_conditions": [
+    "number_of_repairs <= 0"
+  ],
+  "not_applicable_when": [
+    "number_of_repairs <= 0"
+  ],
+  "assumptions": [
+    "Corrective maintenance duration only"
+  ],
+  "input_validation_rules": [
+    "total_downtime_hours >= 0",
+    "number_of_repairs > 0"
+  ],
+  "calculation_method": "deterministic_division",
+  "source_reference": "ISO 55000 Asset Management \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

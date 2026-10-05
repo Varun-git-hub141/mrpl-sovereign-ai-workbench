@@ -1,0 +1,53 @@
+{
+  "formula_id": "UNIT-004",
+  "formula_name": "Temperature Unit Conversion (Celsius to Kelvin)",
+  "category": "units",
+  "description": "Converts temperature from degrees Celsius to absolute Kelvin.",
+  "mathematical_expression": "T_K = T_C + 273.15",
+  "formula": "T_C + 273.15",
+  "required_inputs": [
+    "T_C"
+  ],
+  "optional_inputs": [],
+  "output": "T_K",
+  "input_units": {
+    "T_C": "C"
+  },
+  "output_units": {
+    "T_K": "K"
+  },
+  "output_unit": "K",
+  "applicable_equipment_classes": [
+    "heat_exchanger",
+    "column",
+    "furnace",
+    "piping"
+  ],
+  "applicable_component_classes": [
+    "all"
+  ],
+  "applicability_conditions": [
+    "Temperature in Celsius"
+  ],
+  "applicability": [
+    "temperature in C"
+  ],
+  "non_applicability_conditions": [
+    "T_C < -273.15 (below absolute zero)"
+  ],
+  "not_applicable_when": [
+    "T_C < -273.15"
+  ],
+  "assumptions": [
+    "0 C = 273.15 K"
+  ],
+  "input_validation_rules": [
+    "T_C >= -273.15"
+  ],
+  "calculation_method": "deterministic_addition",
+  "source_reference": "SI Temperature Standard \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

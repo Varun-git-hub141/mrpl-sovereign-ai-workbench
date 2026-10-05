@@ -1,0 +1,18 @@
+# MRPL Intelligent Model Router — Scoring Algorithm Weights
+# Normalized multi-factor weights (W1 through W9)
+
+weights:
+  capability_match: 0.40      # W1: Direct match with task capability demands
+  benchmark_score: 0.15       # W2: Empirical model benchmark quality rating
+  context_suitability: 0.10   # W3: Ability to handle required context token size
+  hardware_suitability: 0.10  # W4: Match with available GPU VRAM vs memory pressure
+  latency_score: 0.05         # W5: Historical / estimated inference speed
+  task_performance: 0.08      # W6: Historical reliability and success rate on this task type
+  risk_compatibility: 0.07    # W7: Alignment of model tier/capability with operational risk
+  policy_compatibility: 0.05  # W8: Compliance with air-gap & data classification policies
+  resource_penalty: 0.00      # W9: Penalty for deploying over-sized models for trivial tasks
+
+risk_thresholds:
+  high_risk_multi_model: true # Enforce primary + verifier on HIGH risk
+  min_capability_threshold: 0.20 # Reject model if required capability match is below 20%
+  vram_safety_margin_gb: 0.5  # Required free VRAM margin

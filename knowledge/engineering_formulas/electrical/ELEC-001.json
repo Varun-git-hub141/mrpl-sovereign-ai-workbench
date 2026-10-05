@@ -1,0 +1,59 @@
+{
+  "formula_id": "ELEC-001",
+  "formula_name": "Three-Phase AC Motor Electrical Power",
+  "category": "electrical",
+  "description": "Calculates electrical active power consumption of three-phase induction motor drive.",
+  "mathematical_expression": "P_kW = (1.73205 * Voltage_V * Current_A * Power_Factor) / 1000.0",
+  "formula": "(1.73205 * Voltage_V * Current_A * Power_Factor) / 1000.0",
+  "required_inputs": [
+    "Voltage_V",
+    "Current_A",
+    "Power_Factor"
+  ],
+  "optional_inputs": [],
+  "output": "electrical_power_kW",
+  "input_units": {
+    "Voltage_V": "V",
+    "Current_A": "A",
+    "Power_Factor": "ratio"
+  },
+  "output_units": {
+    "electrical_power_kW": "kW"
+  },
+  "output_unit": "kW",
+  "applicable_equipment_classes": [
+    "motor",
+    "pump",
+    "compressor"
+  ],
+  "applicable_component_classes": [
+    "electric_motor_drive"
+  ],
+  "applicability_conditions": [
+    "Balanced 3-phase AC sinusoidal load"
+  ],
+  "applicability": [
+    "line-to-line voltage, current, power factor known"
+  ],
+  "non_applicability_conditions": [
+    "Single phase or DC circuits"
+  ],
+  "not_applicable_when": [
+    "single phase"
+  ],
+  "assumptions": [
+    "sqrt(3) = 1.73205"
+  ],
+  "input_validation_rules": [
+    "Voltage_V > 0",
+    "Current_A >= 0",
+    "Power_Factor > 0",
+    "Power_Factor <= 1.0"
+  ],
+  "calculation_method": "deterministic_electrical",
+  "source_reference": "IEEE Standard 141 / Electrical Power Principles \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

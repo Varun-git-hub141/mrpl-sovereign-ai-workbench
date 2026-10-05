@@ -1,0 +1,57 @@
+{
+  "formula_id": "FLOW-001",
+  "formula_name": "Average Liquid Pipe Flow Velocity",
+  "category": "flow",
+  "description": "Calculates mean linear flow velocity in circular pipe from volumetric flow and inside diameter.",
+  "mathematical_expression": "v = (4.0 * flow_m3hr) / (3600.0 * 3.14159265 * (diameter_mm / 1000.0)^2)",
+  "formula": "(4.0 * flow_m3hr) / (3600.0 * 3.14159265 * (diameter_mm / 1000.0)**2)",
+  "required_inputs": [
+    "flow_m3hr",
+    "diameter_mm"
+  ],
+  "optional_inputs": [],
+  "output": "flow_velocity",
+  "input_units": {
+    "flow_m3hr": "m3/hr",
+    "diameter_mm": "mm"
+  },
+  "output_units": {
+    "flow_velocity": "m/s"
+  },
+  "output_unit": "m/s",
+  "applicable_equipment_classes": [
+    "piping",
+    "pipeline",
+    "pump"
+  ],
+  "applicable_component_classes": [
+    "process_pipe",
+    "suction_spool",
+    "discharge_spool"
+  ],
+  "applicability_conditions": [
+    "Full pipe flow, single-phase liquid"
+  ],
+  "applicability": [
+    "circular pipe inside diameter and flow rate known"
+  ],
+  "non_applicability_conditions": [
+    "Partially filled gravity lines or non-circular ducts"
+  ],
+  "not_applicable_when": [
+    "partially filled pipe"
+  ],
+  "assumptions": [
+    "Uniform velocity profile across pipe cross section"
+  ],
+  "input_validation_rules": [
+    "flow_m3hr >= 0",
+    "diameter_mm > 0"
+  ],
+  "calculation_method": "deterministic_hydraulics",
+  "source_reference": "Crane Technical Paper 410 / API RP 14E \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

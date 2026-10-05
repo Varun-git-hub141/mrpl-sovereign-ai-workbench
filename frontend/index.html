@@ -1,0 +1,3484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sovereign AI Workbench — Enterprise Engineering Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+/* Embedded Design System for 100% Guaranteed Immediate Render */
+:root {
+  --bg-app: #f4f6f8;
+  --bg-card: #ffffff;
+  --bg-subtle: #f8fafc;
+  --bg-hover: #f1f5f9;
+  --sidebar-bg: #09281d;
+  --sidebar-nav-active: #1e5645;
+  --sidebar-nav-hover: rgba(255, 255, 255, 0.08);
+  --sidebar-text: #a3c7ba;
+  --sidebar-text-muted: #6e9486;
+  --sidebar-text-active: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --brand-green-primary: #16a34a;
+  --brand-green-dark: #15803d;
+  --brand-green-hover: #166534;
+  --brand-green-light: #22c55e;
+  --brand-green-badge-bg: #dcfce7;
+  --brand-green-badge-text: #15803d;
+  --text-dark: #0f172a;
+  --text-body: #1e293b;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+  --border-card: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: 'Outfit', 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f8 !important;
+  color: #1e293b;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  outline: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  outline: none;
+}
+
+svg {
+  flex-shrink: 0;
+  display: block;
+}
+
+.app-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 240px;
+  min-width: 240px;
+  max-width: 240px;
+  height: 100vh;
+  background-color: #09281d;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.sidebar-header {
+  height: 58px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand-icon-sq {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  background: #16a34a;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.brand-icon-sq svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.brand-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.sidebar-nav-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-item-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 38px;
+  min-height: 38px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: #a3c7ba;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.12s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.nav-item-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+  color: #6e9486;
+  transition: color 0.12s ease;
+}
+
+.nav-item-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.nav-item-btn:hover svg {
+  color: #ffffff;
+}
+
+.nav-item-btn.active {
+  background: #1e5645;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.nav-item-btn.active svg {
+  color: #ffffff;
+}
+
+.sidebar-divider-line {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 6px 4px;
+}
+
+.sidebar-bottom-badge {
+  padding: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.onprem-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.onprem-icon-badge {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  border-radius: 4px;
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.onprem-icon-badge svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.onprem-title-txt {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.onprem-sub-txt {
+  font-size: 10px;
+  color: #6e9486;
+  line-height: 1.2;
+}
+
+/* MAIN VIEWPORT */
+.main-content-wrapper {
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+  background: #f4f6f8;
+}
+
+.top-header-bar {
+  height: 56px;
+  min-height: 56px;
+  background-color: #ffffff;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.96) 20%, rgba(255, 255, 255, 0.72) 65%, rgba(255, 255, 255, 0.55) 100%), url('/assets/refinery_banner.jpg');
+  background-size: cover;
+  background-position: center right;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 50;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.global-search-pill {
+  display: flex;
+  align-items: center;
+  background: #f4f6f8;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  padding: 0 14px;
+  width: 480px;
+  height: 36px;
+  transition: all 0.15s ease;
+}
+
+.global-search-pill:focus-within {
+  background: #ffffff;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.12);
+}
+
+.global-search-pill svg {
+  width: 15px !important;
+  height: 15px !important;
+  color: #64748b;
+  margin-right: 8px;
+}
+
+.global-search-pill input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-size: 13px;
+  color: #0f172a;
+}
+
+.top-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notif-btn {
+  color: #64748b;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.12s ease;
+}
+
+.notif-btn:hover {
+  background: #f1f5f9;
+}
+
+.notif-btn svg {
+  width: 17px !important;
+  height: 17px !important;
+}
+
+.notif-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 7px;
+  height: 7px;
+  background: #16a34a;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+}
+
+.user-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 9999px;
+  transition: background 0.12s ease;
+}
+
+.user-pill:hover {
+  background: #f1f5f9;
+}
+
+.user-avatar-circle {
+  width: 32px;
+  height: 32px;
+  background: #0f382a;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.user-info-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name-line {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.user-dept-line {
+  font-size: 11px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  line-height: 1.2;
+}
+
+.user-dept-line svg {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+/* SCROLLABLE VIEW CONTAINER */
+.view-scroll-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 24px 24px;
+}
+
+.tab-section-content {
+  display: none;
+}
+
+.tab-section-content.active {
+  display: block;
+}
+
+/* HERO BANNER CARD */
+.hero-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  height: 145px;
+  min-height: 145px;
+  display: flex;
+}
+
+.hero-refinery-bg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 58%;
+  background-image: url('/assets/refinery_banner.jpg');
+  background-size: cover;
+  background-position: center right;
+  z-index: 1;
+}
+
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #ffffff 45%, rgba(255, 255, 255, 0.95) 58%, rgba(255, 255, 255, 0.2) 78%, rgba(255, 255, 255, 0) 100%);
+  z-index: 2;
+}
+
+.hero-text-content {
+  position: relative;
+  z-index: 3;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 62%;
+}
+
+.hero-main-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+  color: #0d3829;
+  letter-spacing: -0.3px;
+  margin-bottom: 2px;
+}
+
+.hero-sub-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 14px;
+}
+
+.hero-security-indicators {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.security-indicator-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #0f3d2e;
+}
+
+.sec-icon-circle {
+  width: 20px;
+  height: 20px;
+  background: #dcfce7;
+  color: #15803d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+/* 2-COLUMN DASHBOARD GRID */
+.dashboard-columns-grid {
+  display: grid;
+  grid-template-columns: 1fr 290px;
+  gap: 16px;
+  align-items: start;
+}
+
+.main-column-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.side-column-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panel-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.section-title-combo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.section-title-combo svg {
+  width: 16px !important;
+  height: 16px !important;
+  color: #16a34a;
+}
+
+.section-title-txt {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.section-subtitle-txt {
+  font-size: 11.5px;
+  color: #64748b;
+  margin-left: 6px;
+}
+
+.view-all-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: #15803d;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+
+.view-all-link:hover {
+  text-decoration: underline;
+}
+
+/* ASK AI WORKSPACE */
+.ask-ai-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.ask-ai-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ask-ai-chat-icon {
+  width: 28px;
+  height: 28px;
+  background: #dcfce7;
+  color: #16a34a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ask-ai-chat-icon svg {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.ask-ai-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.ask-ai-right-ctrls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.model-dropdown-select {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1e293b;
+  cursor: pointer;
+}
+
+.tune-ctrl-btn {
+  width: 28px;
+  height: 28px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  transition: all 0.12s ease;
+}
+
+.tune-ctrl-btn svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.tune-ctrl-btn:hover {
+  color: #16a34a;
+  background: #f1f5f9;
+}
+
+.ask-ai-input-container {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 10px 12px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ask-ai-input-container:focus-within {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.1);
+}
+
+.ask-ai-textarea-field {
+  width: 100%;
+  border: none;
+  resize: vertical;
+  min-height: 56px;
+  font-size: 13.5px;
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+.ask-ai-textarea-field::placeholder {
+  color: #94a3b8;
+}
+
+.files-preview-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.file-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  padding: 3px 8px;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.file-chip .remove-file {
+  cursor: pointer;
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.ask-ai-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.ask-ai-left-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pill-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1e293b;
+  transition: all 0.12s ease;
+}
+
+.pill-action-btn svg {
+  width: 13px !important;
+  height: 13px !important;
+  color: #16a34a;
+}
+
+.pill-action-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.send-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #16a34a;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 7px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.12s ease;
+}
+
+.send-action-btn svg {
+  width: 13px !important;
+  height: 13px !important;
+}
+
+.send-action-btn:hover {
+  background: #15803d;
+}
+
+/* 6-CARD TASKS GRID */
+.tasks-six-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+
+.sample-task-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sample-task-item:hover {
+  background: #ffffff;
+  border-color: #16a34a;
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.08);
+  transform: translateY(-1px);
+}
+
+.task-icon-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.task-icon-box.blue { background: #eff6ff; color: #2563eb; }
+.task-icon-box.green { background: #f0fdf4; color: #16a34a; }
+.task-icon-box.purple { background: #faf5ff; color: #9333ea; }
+.task-icon-box.orange { background: #fff7ed; color: #ea580c; }
+
+.task-title-bold {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.task-prompt-snippet {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+/* 4-CARD WORKFLOWS GRID */
+.workflows-four-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.workflow-item-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.workflow-item-card:hover {
+  background: #ffffff;
+  border-color: #16a34a;
+  transform: translateY(-1px);
+}
+
+.wf-icon-box {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wf-icon-box svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.wf-icon-box.green { background: #dcfce7; color: #15803d; }
+.wf-icon-box.purple { background: #f3e8ff; color: #7e22ce; }
+
+.wf-title-head {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.wf-desc-sub {
+  font-size: 10.5px;
+  color: #64748b;
+  line-height: 1.2;
+}
+
+/* 4-BOX STATUS GRID */
+.status-four-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.status-stat-cell {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-stat-icon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-cell-label {
+  font-size: 10.5px;
+  color: #64748b;
+}
+
+.stat-cell-val {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.green-dot-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #16a34a;
+  display: inline-block;
+}
+
+/* RIGHT PANEL */
+.quick-actions-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.qa-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid transparent;
+  color: #1e293b;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.12s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.qa-left-part {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qa-left-part svg {
+  width: 14px !important;
+  height: 14px !important;
+  color: #64748b;
+}
+
+.qa-action-row:hover {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.qa-action-row:hover .qa-left-part svg {
+  color: #16a34a;
+}
+
+.activity-items-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.activity-row:hover {
+  background: #f1f5f9;
+}
+
+.file-badge-sq {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.file-badge-sq.pdf { background: #fee2e2; color: #dc2626; }
+.file-badge-sq.docx { background: #dbeafe; color: #2563eb; }
+.file-badge-sq.xlsx { background: #dcfce7; color: #16a34a; }
+.file-badge-sq.img { background: #f1f5f9; color: #475569; }
+
+.act-file-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.act-meta-info {
+  font-size: 10.5px;
+  color: #64748b;
+}
+
+.app-footer-bar {
+  height: 34px;
+  min-height: 34px;
+  border-top: 1px solid #e2e8f0;
+  background: #ffffff;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.footer-online-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #15803d;
+  font-weight: 600;
+}
+
+/* RESULTS PANEL */
+.exec-results-panel {
+  margin-top: 14px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 14px;
+}
+
+.exec-metrics-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 11.5px;
+  margin-bottom: 10px;
+}
+
+.response-box-scroll {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #0f172a;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.12s ease;
+}
+
+.btn-primary {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #15803d;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-secondary:hover {
+  background: #f1f5f9;
+}
+
+.preset-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.preset-tag.low, .preset-tag.emerald { background: #dcfce7; color: #15803d; }
+.preset-tag.medium, .preset-tag.amber { background: #fef3c7; color: #b45309; }
+.preset-tag.high, .preset-tag.ruby { background: #fee2e2; color: #dc2626; }
+.preset-tag.cyan { background: #e0f2fe; color: #0284c7; }
+
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.status-tag.healthy { background: #dcfce7; color: #15803d; }
+.status-tag.degraded { background: #fee2e2; color: #dc2626; }
+
+/* ══════════════════════════════════════════════════════════════════
+   PHASE 9: INDUSTRIAL INTEGRITY INVESTIGATION STYLING
+   ══════════════════════════════════════════════════════════════════ */
+.integrity-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.integrity-case-bar {
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-card);
+}
+
+.case-info-primary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.case-main-tag {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--brand-green-dark);
+  background: var(--brand-green-badge-bg);
+  padding: 4px 10px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+}
+
+.case-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Stepper Navigation */
+.integrity-stepper-bar {
+  display: flex;
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 6px;
+  gap: 4px;
+  overflow-x: auto;
+  box-shadow: var(--shadow-card);
+}
+
+.integrity-step-btn {
+  flex: 1;
+  min-width: 130px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: #f8fafc;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.integrity-step-btn .step-num {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.integrity-step-btn.completed {
+  color: var(--brand-green-dark);
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.integrity-step-btn.completed .step-num {
+  background: var(--brand-green-light);
+  color: #ffffff;
+}
+
+.integrity-step-btn.active {
+  color: #ffffff;
+  background: var(--brand-green-dark);
+  border-color: var(--brand-green-dark);
+  box-shadow: 0 2px 4px rgba(21, 128, 61, 0.2);
+}
+
+.integrity-step-btn.active .step-num {
+  background: #ffffff;
+  color: var(--brand-green-dark);
+}
+
+/* Stage Panels */
+.integrity-stage-panel {
+  display: none;
+}
+
+.integrity-stage-panel.active {
+  display: block;
+}
+
+/* Provenance Drawer */
+.provenance-drawer {
+  position: fixed;
+  top: 0;
+  right: -550px;
+  width: 520px;
+  max-width: 90vw;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transition: right 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.provenance-drawer.open {
+  right: 0;
+}
+
+.prov-drawer-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+}
+
+.prov-drawer-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.prov-quote-box {
+  background: #f8fafc;
+  border-left: 3px solid var(--brand-green-primary);
+  padding: 12px 14px;
+  margin: 14px 0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.prov-quote {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-dark);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+.prov-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-size: 12px;
+  margin: 14px 0;
+  background: #fdfdfd;
+  border: 1px solid var(--border-subtle);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+}
+
+.prov-invariants-box {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 11.5px;
+  color: #1e40af;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* Toast Notifications */
+.integrity-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.25s ease;
+  z-index: 9999;
+}
+
+.integrity-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.integrity-toast.toast-success {
+  background: #15803d;
+}
+
+.integrity-toast.toast-error {
+  background: #dc2626;
+}
+
+/* Hierarchy Tree for Audit Trace */
+.trace-tree-wrapper {
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+.trace-tree-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-card);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.trace-node-item {
+  margin: 6px 0;
+  border-left: 2px solid #e2e8f0;
+  padding-left: 12px;
+}
+
+.trace-node-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: #f8fafc;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.trace-node-header:hover {
+  background: #f1f5f9;
+}
+
+.node-type-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+.type-final-decision { background: #dcfce7; color: #15803d; }
+.type-decision-rules { background: #e0e7ff; color: #4338ca; }
+.type-reconciliation-result { background: #fef3c7; color: #b45309; }
+.type-relationship { background: #f1f5f9; color: #475569; }
+.type-evidence-assessment { background: #e0f2fe; color: #0284c7; }
+.type-observation-collection { background: #fae8ff; color: #86198f; }
+.type-observation { background: #f3f4f6; color: #1f2937; }
+.type-source-document-span { background: #ecfdf5; color: #065f46; }
+
+.trace-node-body {
+  display: none;
+  padding: 8px 0 8px 16px;
+}
+
+.trace-node-item.expanded > .trace-node-body {
+  display: block;
+}
+
+.trace-details-grid {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.detail-k { color: #64748b; font-weight: 600; }
+.detail-v { color: #0f172a; margin-left: 4px; }
+
+/* P&ID ANALYZER REDESIGN STYLES */
+.pid-concept-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.pid-concept-card:hover {
+  border-color: #16a34a;
+  background: #f0fdf4;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.12);
+}
+
+.pid-concept-icon-wrap {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 50%;
+  background: #dcfce7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #16a34a;
+}
+
+.pid-concept-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: 0.3px;
+}
+
+.pid-concept-sub {
+  font-size: 11.5px;
+  color: #64748b;
+  margin-top: 1px;
+}
+
+.pid-suggestion-chip {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.pid-suggestion-chip:hover {
+  background: #dcfce7;
+  border-color: #86efac;
+  color: #15803d;
+}
+  </style>
+</head>
+<body>
+
+  <div class="app-layout">
+
+    <!-- ─────────────────────────────────────────────────────────────
+         1. LEFT SIDEBAR (240px FIXED)
+         ───────────────────────────────────────────────────────────── -->
+    <aside class="sidebar">
+      
+      <!-- Brand Header -->
+      <div class="sidebar-header">
+        <div class="brand-icon-sq">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+          </svg>
+        </div>
+        <span class="brand-name">Sovereign AI Workbench</span>
+      </div>
+
+      <!-- Navigation List -->
+      <nav class="sidebar-nav-container">
+        <button class="nav-item-btn active" data-tab="home">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Home</span>
+        </button>
+
+        <button class="nav-item-btn" data-tab="rag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Engineering RAG</span>
+        </button>
+
+        <button class="nav-item-btn" data-tab="formulas">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="16" y2="10"></line><line x1="8" y1="14" x2="12" y2="14"></line></svg>
+          <span>Formula Library</span>
+        </button>
+
+        <button class="nav-item-btn" data-tab="pid">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <span>P&ID Analyzer</span>
+        </button>
+
+        <button class="nav-item-btn" data-tab="trace">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Router & Trace</span>
+        </button>
+
+        <button class="nav-item-btn" data-tab="registry">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          <span>Model Registry</span>
+        </button>
+
+        <button class="nav-item-btn" data-tab="report-assistant">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <span>Report Assistant</span>
+        </button>
+
+        <button class="nav-item-btn" data-tab="verification">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+          <span>Verification Center</span>
+        </button>
+
+        <button class="nav-item-btn" data-tab="integrity">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>Integrity Investigation</span>
+        </button>
+
+        <button class="nav-item-btn" data-tab="asset-registry" id="nav-btn-asset-registry">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line><path d="M10 6h8"></path><path d="M10 18h8"></path></svg>
+          <span>Asset Registry</span>
+        </button>
+
+        <button class="nav-item-btn" data-tab="sovereignty">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><circle cx="12" cy="11" r="3"></circle><line x1="12" y1="14" x2="12" y2="17"></line></svg>
+          <span>Sovereignty Center</span>
+        </button>
+
+        <div class="sidebar-divider-line"></div>
+
+        <button class="nav-item-btn" data-tab="settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <span>Settings</span>
+        </button>
+
+        <button class="nav-item-btn" data-tab="help">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <span>Help & Documentation</span>
+        </button>
+
+        <button class="nav-item-btn" data-tab="feedback">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          <span>Feedback</span>
+        </button>
+      </nav>
+
+      <!-- Sidebar Industrial Refinery Skyline Graphic (down of Feedback) -->
+      <div style="padding: 0 14px 4px 14px; opacity: 0.38; display: flex; justify-content: center; align-items: flex-end; overflow: hidden; height: 56px; margin-top: auto;">
+        <svg viewBox="0 0 212 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+          <!-- Refinery Silhouette Towers and Chimneys -->
+          <rect x="8" y="16" width="12" height="40" rx="1.5" fill="#a3c7ba" />
+          <line x1="14" y1="9" x2="14" y2="16" stroke="#a3c7ba" stroke-width="1.5" />
+          <circle cx="14" cy="8" r="1.5" fill="#a3c7ba" />
+          <rect x="24" y="26" width="24" height="30" rx="2" fill="#a3c7ba" />
+          <rect x="52" y="7" width="15" height="49" rx="2" fill="#a3c7ba" />
+          <line x1="59.5" y1="2" x2="59.5" y2="7" stroke="#a3c7ba" stroke-width="1.5" />
+          <rect x="55" y="13" width="9" height="2" fill="#09281d" />
+          <rect x="55" y="21" width="9" height="2" fill="#09281d" />
+          <rect x="55" y="29" width="9" height="2" fill="#09281d" />
+          <line x1="67" y1="36" x2="88" y2="36" stroke="#a3c7ba" stroke-width="1.5" />
+          <circle cx="98" cy="35" r="13" fill="#a3c7ba" />
+          <line x1="120" y1="56" x2="120" y2="4" stroke="#a3c7ba" stroke-width="2" />
+          <path d="M117 4 L120 0 L123 4 Z" fill="#22c55e" />
+          <rect x="132" y="14" width="14" height="42" rx="2" fill="#a3c7ba" />
+          <rect x="152" y="24" width="28" height="32" rx="2.5" fill="#a3c7ba" />
+          <rect x="186" y="18" width="18" height="38" rx="2" fill="#a3c7ba" />
+          <line x1="0" y1="55" x2="212" y2="55" stroke="#a3c7ba" stroke-width="1.5" />
+        </svg>
+      </div>
+
+      <!-- Sidebar Bottom On-Premise Badge -->
+      <div class="sidebar-bottom-badge">
+        <div class="onprem-box">
+          <div class="onprem-icon-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+          </div>
+          <div>
+            <div class="onprem-title-txt">On-Premise</div>
+            <div class="onprem-sub-txt">Your Data Stays Within Your Organization</div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         2. MAIN CONTENT AREA
+         ───────────────────────────────────────────────────────────── -->
+    <div class="main-content-wrapper">
+
+      <!-- TOP HEADER BAR -->
+      <header class="top-header-bar">
+        <div class="global-search-pill">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="global-search-input" placeholder="Search documents, ask questions, or enter a command..." onkeydown="if(event.key==='Enter') { Workbench.loadPrompt(this.value); App.switchTab('home'); }">
+        </div>
+
+        <div class="top-header-right">
+          <!-- MRPL Corporate Header Badge -->
+          <div style="display: flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.88); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(226, 232, 240, 0.85); backdrop-filter: blur(4px);">
+            <div style="background: #15803d; color: #ffffff; font-weight: 800; font-size: 9.5px; padding: 3px 6px; border-radius: 3px; display: flex; flex-direction: column; align-items: center; line-height: 1;">
+              <span style="letter-spacing: 0.5px;">MRPL</span>
+            </div>
+            <div style="font-size: 10px; font-weight: 800; color: #0f172a; letter-spacing: 0.3px; line-height: 1.15; text-transform: uppercase;">
+              Mangalore Refinery<br><span style="font-size: 8.5px; font-weight: 700; color: #475569;">and Petrochemicals Limited</span>
+            </div>
+          </div>
+
+          <button class="notif-btn" title="Notifications">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span class="notif-dot"></span>
+          </button>
+
+          <div class="user-pill" style="background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(4px); padding: 4px 10px;">
+            <div class="user-avatar-circle">HM</div>
+            <div class="user-info-text">
+              <span class="user-name-line">Hiranmai</span>
+              <span class="user-dept-line">Engineering <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+              <span style="font-size: 7.5px; color: #64748b; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 1px;">People Process Planet Progress</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- SCROLLABLE VIEW CONTAINER -->
+      <div class="view-scroll-container">
+
+        <!-- ─────────────────────────────────────────────────────────
+             TAB: HOME DASHBOARD (PRIMARY DESKTOP VIEW)
+             ───────────────────────────────────────────────────────── -->
+        <div id="tab-home" class="tab-section-content active">
+
+          <!-- HERO BANNER CARD -->
+          <div class="hero-card">
+            <div class="hero-refinery-bg"></div>
+            <div class="hero-gradient-overlay"></div>
+            <div class="hero-text-content">
+              <h1 class="hero-main-title">AI for Engineering Excellence</h1>
+              <p class="hero-sub-title">Analyze. Create. Automate. Securely.</p>
+              <div class="hero-security-indicators">
+                <div class="security-indicator-pill">
+                  <span class="sec-icon-circle">🔒</span>
+                  <span>100% On-Premise</span>
+                </div>
+                <div class="security-indicator-pill">
+                  <span class="sec-icon-circle">🗄️</span>
+                  <span>Your Data Stays Inside</span>
+                </div>
+                <div class="security-indicator-pill">
+                  <span class="sec-icon-circle">👥</span>
+                  <span>Built for Engineering Teams</span>
+                </div>
+                <div class="security-indicator-pill">
+                  <span class="sec-icon-circle">🛡️</span>
+                  <span>Secure & Confidential</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2-COLUMN DASHBOARD GRID -->
+          <div class="dashboard-columns-grid">
+
+            <!-- LEFT MAIN COLUMN -->
+            <div class="main-column-stack">
+
+              <!-- ASK AI WORKSPACE CARD -->
+              <div class="panel-card">
+                <div class="ask-ai-top-row">
+                  <div class="ask-ai-brand-wrap">
+                    <div class="ask-ai-chat-icon">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                    <span class="ask-ai-label">Ask AI</span>
+                  </div>
+                  <div class="ask-ai-right-ctrls">
+                    <select id="risk-override-select" class="model-dropdown-select">
+                      <option value="">Auto (Best Model)</option>
+                      <option value="low">Fast Model (Qwen 1.5B)</option>
+                      <option value="medium">Balanced (Deterministic Tools)</option>
+                      <option value="high">High Risk (Dual Verifier Gate)</option>
+                    </select>
+                    <button class="tune-ctrl-btn" title="Tune Model Parameters" onclick="Registry.openModal('qwen2.5-coder:1.5b')">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Input Field & Dropzone -->
+                <div class="ask-ai-input-container">
+                  <textarea id="prompt-input" class="ask-ai-textarea-field" rows="3" placeholder="Ask a question, upload a document, or give an instruction..."></textarea>
+                  <input type="file" id="file-input" multiple style="display: none;" onchange="Workbench.handleFileSelect(event)">
+                  <div class="files-preview-list" id="files-preview-list"></div>
+                </div>
+
+                <!-- Action Bar -->
+                <div class="ask-ai-bottom-bar">
+                  <div class="ask-ai-left-actions">
+                    <button class="pill-action-btn" onclick="document.getElementById('file-input').click()">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                      <span>Upload File</span>
+                    </button>
+
+                    <button class="pill-action-btn" onclick="document.getElementById('file-input').click()">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                      <span>Add from Folder</span>
+                    </button>
+
+                    <button class="pill-action-btn" onclick="App.switchTab('rag')">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                      <span>Use Internal Knowledge ▾</span>
+                    </button>
+
+                    <button id="btn-route-preview" class="pill-action-btn" onclick="Workbench.routeTask()">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                      <span>Analyse & Route Plan</span>
+                    </button>
+                  </div>
+
+                  <button id="btn-execute" class="send-action-btn" onclick="Workbench.executeTask()">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    <span>Send</span>
+                  </button>
+                </div>
+
+                <!-- Pre-flight Summary Box -->
+                <div id="route-summary-box" style="display: none; margin-top: 10px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; border-bottom: 1px solid #f1f5f9; padding-bottom: 6px;">
+                    <span style="font-size: 11.5px; font-weight: 700; color: #15803d; letter-spacing: 0.3px;">Routing Plan Generated</span>
+                    <span id="route-box-risk" class="preset-tag medium">MEDIUM</span>
+                  </div>
+                  <div id="route-box-details" style="font-size: 11.5px; color: #1e293b; line-height: 1.4;"></div>
+                </div>
+
+                <!-- In-place Results Area -->
+                <div id="exec-results-wrapper" class="exec-results-panel" style="display: none;">
+                  <div class="exec-metrics-row">
+                    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                      <div class="model-badge-active" id="badge-intent-display">
+                        <span style="color: #64748b;">INTENT:</span>
+                        <strong id="res-detected-intent" style="color: #b45309; margin-left: 3px;">--</strong>
+                      </div>
+                      <div class="model-badge-active" id="badge-output-display">
+                        <span style="color: #64748b;">OUTPUT:</span>
+                        <strong id="res-inferred-output" style="color: #0284c7; margin-left: 3px;">--</strong>
+                      </div>
+                      <div class="model-badge-active" id="active-model-display">
+                        <span style="color: #64748b;">MODEL:</span>
+                        <strong id="res-model-name" style="color: #15803d; margin-left: 3px;">Awaiting</strong>
+                      </div>
+                    </div>
+                    <div style="display: flex; gap: 8px; color: #64748b;">
+                      <span id="res-latency">Latency: -- ms</span>
+                      <span id="res-confidence">Confidence: --</span>
+                    </div>
+                  </div>
+
+                  <div id="exec-loader" style="display: none; align-items: center; gap: 6px; font-size: 12px; color: #15803d; padding: 10px 0;">
+                    <span class="green-dot-pulse"></span> Local Sovereign Ollama Inferencing...
+                  </div>
+
+                  <div class="response-box-scroll" id="response-output-area"></div>
+
+                  <!-- Dual Verification Box -->
+                  <div class="dual-verification-panel" id="dual-verification-box" style="display: none; margin-top: 10px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 10px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                      <strong style="font-size: 11.5px; color: #b45309;">Independent Cross-Verification</strong>
+                      <span id="verification-status-tag" class="preset-tag high">PASSED</span>
+                    </div>
+                    <div id="verifier-output-text" style="font-size: 11px; color: #78350f;"></div>
+                  </div>
+
+                  <!-- Human Gate Box -->
+                  <div id="human-gate-box" style="display: none; margin-top: 10px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                      <strong style="font-size: 11.5px; color: #dc2626;">🛡️ High-Risk Engineering Review Required</strong>
+                      <span id="human-gate-state" class="preset-tag high">PENDING</span>
+                    </div>
+                    <div style="display: flex; gap: 6px; margin-top: 6px;">
+                      <input type="text" id="reviewer-notes" placeholder="Engineering reviewer comments..." class="form-input" style="flex: 1;">
+                      <button class="btn btn-primary" onclick="Workbench.submitHumanApproval('approve')">Approve</button>
+                      <button class="btn btn-secondary" onclick="Workbench.submitHumanApproval('reject')">Reject</button>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px;">
+                    <button class="btn btn-secondary" onclick="Workbench.exportDeliverable('markdown')">📥 Export Markdown</button>
+                    <button class="btn btn-secondary" onclick="Workbench.exportDeliverable('json')">📊 Export JSON</button>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- SAMPLE ENGINEERING TASKS (6 HORIZONTAL CARDS) -->
+              <div class="panel-card">
+                <div class="section-header-row">
+                  <div class="section-title-combo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
+                    <span class="section-title-txt">Sample Engineering Tasks</span>
+                    <span class="section-subtitle-txt">Click on any example to try it in the workspace.</span>
+                  </div>
+                  <a class="view-all-link" onclick="App.switchTab('rag')">View All →</a>
+                </div>
+
+                <div class="tasks-six-grid">
+                  <!-- Task 1 -->
+                  <div class="sample-task-item" onclick="Workbench.loadPrompt('What is the previous wall thickness of P-201?')">
+                    <div class="task-icon-box blue">🔍</div>
+                    <div class="task-title-bold">1. Direct Knowledge Query</div>
+                    <div class="task-prompt-snippet">"What is the previous wall thickness of P-201?"</div>
+                  </div>
+
+                  <!-- Task 2 -->
+                  <div class="sample-task-item" onclick="Workbench.loadPrompt('Calculate the corrosion rate of P-201.')">
+                    <div class="task-icon-box green">🧮</div>
+                    <div class="task-title-bold">2. Engineering Calculation</div>
+                    <div class="task-prompt-snippet">"Calculate the corrosion rate of P-201."</div>
+                  </div>
+
+                  <!-- Task 3 -->
+                  <div class="sample-task-item" onclick="Workbench.loadPrompt('Prepare an approval note for P-201.')">
+                    <div class="task-icon-box blue">📄</div>
+                    <div class="task-title-bold">3. Approval Note</div>
+                    <div class="task-prompt-snippet">"Prepare an approval note for P-201."</div>
+                  </div>
+
+                  <!-- Task 4 -->
+                  <div class="sample-task-item" onclick="Workbench.loadPrompt('Create a presentation on P-201.')">
+                    <div class="task-icon-box purple">📊</div>
+                    <div class="task-title-bold">4. Slide Deck</div>
+                    <div class="task-prompt-snippet">"Create a presentation on P-201."</div>
+                  </div>
+
+                  <!-- Task 5 -->
+                  <div class="sample-task-item" onclick="Workbench.loadPrompt('Create an Excel sheet containing inspection measurements.')">
+                    <div class="task-icon-box green">📈</div>
+                    <div class="task-title-bold">5. Measurement Sheet (XLSX)</div>
+                    <div class="task-prompt-snippet">"Create an Excel sheet containing inspection measurements."</div>
+                  </div>
+
+                  <!-- Task 6 -->
+                  <div class="sample-task-item" onclick="Workbench.loadPrompt('Compare the 2019 and 2024 inspection results.')">
+                    <div class="task-icon-box orange">📉</div>
+                    <div class="task-title-bold">6. Multi-Year Comparison</div>
+                    <div class="task-prompt-snippet">"Compare the 2019 and 2024 inspection results."</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- COMMON WORKFLOWS (4 CARDS) -->
+              <div class="panel-card">
+                <div class="section-header-row">
+                  <div class="section-title-combo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    <span class="section-title-txt">Common Workflows</span>
+                  </div>
+                </div>
+
+                <div class="workflows-four-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                  <div class="workflow-item-card" onclick="Workbench.loadPrompt('Generate V-201 Inspection Review Note')">
+                    <div class="wf-icon-box blue" style="background: rgba(0, 240, 255, 0.15); color: var(--accent-cyan);">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                    </div>
+                    <div>
+                      <div class="wf-title-head">V-201 Review Note</div>
+                      <div class="wf-desc-sub">Verified DOCX with Re-Read Verification</div>
+                    </div>
+                  </div>
+
+                  <div class="workflow-item-card" onclick="Workbench.loadPrompt('Prepare an approval note for P-201.')">
+                    <div class="wf-icon-box green">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                    </div>
+                    <div>
+                      <div class="wf-title-head">Approval Note</div>
+                      <div class="wf-desc-sub">Generate structured approval notes</div>
+                    </div>
+                  </div>
+
+                  <div class="workflow-item-card" onclick="Workbench.loadPrompt('For V-201 Shell Course 1, compare the 2017 baseline with the 2020 UT measurement and calculate the corrosion rate.')">
+                    <div class="wf-icon-box green">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="16" y2="10"></line></svg>
+                    </div>
+                    <div>
+                      <div class="wf-title-head">V-201 Corrosion Rate</div>
+                      <div class="wf-desc-sub">API 570 Deterministic Math (0.2286 mm/yr)</div>
+                    </div>
+                  </div>
+
+                  <div class="workflow-item-card" onclick="App.switchTab('pid')">
+                    <div class="wf-icon-box purple">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                    </div>
+                    <div>
+                      <div class="wf-title-head">Drawing Analysis</div>
+                      <div class="wf-desc-sub">Extract insights from P&ID and isometrics</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SYSTEM STATUS (4 BOXES) -->
+              <div class="panel-card">
+                <div class="section-header-row">
+                  <div class="section-title-combo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    <span class="section-title-txt">System Status</span>
+                  </div>
+                </div>
+
+                <div class="status-four-grid">
+                  <div class="status-stat-cell">
+                    <div class="status-stat-icon">🖥️</div>
+                    <div>
+                      <div class="stat-cell-label">Models</div>
+                      <div class="stat-cell-val"><span class="green-dot-pulse"></span> 3 / 3 Online</div>
+                    </div>
+                  </div>
+
+                  <div class="status-stat-cell">
+                    <div class="status-stat-icon">🗄️</div>
+                    <div>
+                      <div class="stat-cell-label">Storage</div>
+                      <div class="stat-cell-val"><span class="green-dot-pulse"></span> Healthy</div>
+                    </div>
+                  </div>
+
+                  <div class="status-stat-cell">
+                    <div class="status-stat-icon">🔧</div>
+                    <div>
+                      <div class="stat-cell-label">Tools & Connectors</div>
+                      <div class="stat-cell-val"><span class="green-dot-pulse"></span> Active</div>
+                    </div>
+                  </div>
+
+                  <div class="status-stat-cell">
+                    <div class="status-stat-icon">📶</div>
+                    <div>
+                      <div class="stat-cell-label">Network</div>
+                      <div class="stat-cell-val"><span class="green-dot-pulse"></span> No External Access</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- RIGHT SIDE COLUMN -->
+            <div class="side-column-stack">
+
+              <!-- 🔒 PERSISTENT SOVEREIGNTY MONITOR CARD -->
+              <div class="panel-card" style="border: 1.5px solid #16a34a; background: #ffffff;">
+                <div class="section-header-row" style="margin-bottom: 8px;">
+                  <div class="section-title-combo">
+                    <span style="font-size: 15px;">🔒</span>
+                    <span class="section-title-txt" style="color: #15803d; font-size: 13px;">SOVEREIGNTY MONITOR</span>
+                  </div>
+                  <a class="view-all-link" onclick="App.switchTab('sovereignty')">Center →</a>
+                </div>
+
+                <div style="font-family: var(--font-mono); font-size: 11px; line-height: 1.6; color: #334155; background: #f8fafc; padding: 10px 12px; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 8px;">
+                  <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #64748b;">Inference</span>
+                    <strong id="sov-mon-inference" style="color: #15803d;"><span class="green-dot-pulse"></span> LOCAL</strong>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #64748b;">Model</span>
+                    <strong id="sov-mon-model" style="color: #0f172a;">qwen2.5-coder:3b</strong>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #64748b;">Endpoint</span>
+                    <code id="sov-mon-endpoint" style="color: #0284c7;">127.0.0.1:11434</code>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #64748b;">External Calls</span>
+                    <strong id="sov-mon-extcalls" style="color: #15803d;">0</strong>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #64748b;">Data Egress</span>
+                    <strong id="sov-mon-egress" style="color: #15803d;">0 bytes</strong>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #64748b;">Model Downloads</span>
+                    <strong id="sov-mon-downloads" style="color: #15803d;">0</strong>
+                  </div>
+                </div>
+
+                <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 6px 10px; font-size: 10.5px; display: flex; align-items: center; justify-content: space-between;">
+                  <span style="color: #166534; font-weight: 700;">AIR-GAP STATUS</span>
+                  <span id="sov-mon-status" class="preset-tag emerald font-bold" style="font-size: 9px; padding: 2px 6px;">● VERIFIED SESSION</span>
+                </div>
+              </div>
+
+              <!-- QUICK ACTIONS -->
+              <div class="panel-card">
+                <div class="section-header-row">
+                  <div class="section-title-combo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    <span class="section-title-txt">Quick Actions</span>
+                  </div>
+                </div>
+
+                <div class="quick-actions-menu">
+                  <button class="qa-action-row" onclick="document.getElementById('file-input').click()">
+                    <div class="qa-left-part">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                      <span>Upload Document</span>
+                    </div>
+                    <span>›</span>
+                  </button>
+
+                  <button class="qa-action-row" onclick="Workbench.clearAll(); document.getElementById('prompt-input').focus();">
+                    <div class="qa-left-part">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                      <span>New Analysis</span>
+                    </div>
+                    <span>›</span>
+                  </button>
+
+                  <button class="qa-action-row" onclick="Workbench.loadPrompt('Prepare an approval note based on the verified inspection findings.')">
+                    <div class="qa-left-part">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                      <span>Generate Report</span>
+                    </div>
+                    <span>›</span>
+                  </button>
+
+                  <button class="qa-action-row" onclick="Workbench.loadPrompt('Create a presentation on P-201.')">
+                    <div class="qa-left-part">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                      <span>Create Presentation</span>
+                    </div>
+                    <span>›</span>
+                  </button>
+
+                  <button class="qa-action-row" onclick="Workbench.loadPrompt('Write Python code to calculate corrosion rate from thickness measurements.')">
+                    <div class="qa-left-part">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                      <span>Run Code</span>
+                    </div>
+                    <span>›</span>
+                  </button>
+
+                  <button class="qa-action-row" onclick="App.switchTab('rag')">
+                    <div class="qa-left-part">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                      <span>Search Internal Knowledge</span>
+                    </div>
+                    <span>›</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- RECENT ACTIVITY -->
+              <div class="panel-card">
+                <div class="section-header-row">
+                  <div class="section-title-combo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span class="section-title-txt">Recent Activity</span>
+                  </div>
+                  <a class="view-all-link" style="cursor: pointer;" onclick="ActivityHistory.openModal()">View All</a>
+                </div>
+
+                <div class="activity-items-stack" id="recent-activity-container">
+                  <div style="text-align: center; color: #94a3b8; font-size: 12px; padding: 20px;">
+                    Loading recent activity history...
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────────
+             TAB: ENGINEERING RAG
+             ───────────────────────────────────────────────────────── -->
+        <div id="tab-rag" class="tab-section-content">
+          <div class="panel-card" style="margin-bottom: 16px;">
+            <div class="section-header-row">
+              <div>
+                <h2 style="font-size: 16px; font-weight: 700;">MRPL Hybrid RAG Knowledge Base</h2>
+                <p id="rag-subtitle" style="font-size: 12px; color: #64748b;">Curated Refinery Documents across 9 Categories • BM25 + Semantic Dense Retrieval</p>
+              </div>
+              <div id="rag-auth-dist" style="display: flex; gap: 6px;">
+                <span class="preset-tag high">MRPL Docs</span>
+                <span class="preset-tag cyan">Chunks</span>
+                <span class="preset-tag emerald">100% On-Premise</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto; padding-bottom: 4px;">
+              <button class="preset-tag" onclick="RAGManager.filterByTag('P-201')">P-201 (CDU-II Feed)</button>
+              <button class="preset-tag" onclick="RAGManager.filterByTag('P-101')">P-101 (Residue Pump)</button>
+              <button class="preset-tag" onclick="RAGManager.filterByTag('V-201')">V-201 (HP Separator)</button>
+              <button class="preset-tag" onclick="RAGManager.filterByTag('TK-201')">TK-201 (Crude Tank)</button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 200px 120px; gap: 8px;">
+              <input type="text" id="rag-search-input" class="form-input" placeholder="Search MRPL documents..." value="Tell me everything relevant about P-201." onkeydown="if(event.key==='Enter') RAGManager.runDebugQuery()">
+              <select id="rag-category-select" class="form-input" onchange="RAGManager.searchRAG()">
+                <option value="all">All Categories</option>
+                <option value="Equipment Master">Equipment Master</option>
+                <option value="Inspection Reports">Inspection Reports</option>
+                <option value="Maintenance Records">Maintenance Records</option>
+                <option value="P&IDs / Engineering Drawings">P&IDs / Drawings</option>
+                <option value="SOPs">SOPs</option>
+              </select>
+              <button class="btn btn-primary" onclick="RAGManager.runDebugQuery()">⚡ Debug</button>
+            </div>
+          </div>
+
+          <div id="rag-debug-pipeline-container" style="display: none; margin-bottom: 14px;"></div>
+          <div id="rag-results-container"></div>
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────────
+             TAB: FORMULA LIBRARY
+             ───────────────────────────────────────────────────────── -->
+        <div id="tab-formulas" class="tab-section-content">
+          <div class="panel-card" style="margin-bottom: 16px;">
+            <div class="section-header-row">
+              <div>
+                <h2 style="font-size: 16px; font-weight: 700;">Sovereign Formula Registry</h2>
+                <p style="font-size: 12px; color: #64748b;">50+ machine-readable calculations executed with 100% deterministic local Python arithmetic.</p>
+              </div>
+              <span class="preset-tag emerald" id="formula-total-count">54 Formulas</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 200px; gap: 8px;">
+              <input type="text" id="formula-search-input" class="form-input" placeholder="Search formula name, ID (e.g. CORR-001)..." oninput="FormulaManager.fetchFormulas(null, this.value)">
+              <select id="formula-category-select" class="form-input" onchange="FormulaManager.fetchFormulas(this.value, document.getElementById('formula-search-input').value)">
+                <option value="all">All Categories</option>
+                <option value="Corrosion">Corrosion & Remaining Life</option>
+                <option value="Piping">Piping & Hydraulics</option>
+                <option value="Pressure Vessels">Pressure Vessels</option>
+              </select>
+            </div>
+          </div>
+          <div id="formulas-grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px;"></div>
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────────
+             TAB: P&ID ANALYZER (INDUSTRIAL WORKSPACE REDESIGN)
+             ───────────────────────────────────────────────────────── -->
+        <div id="tab-pid" class="tab-section-content">
+          <!-- 1. PAGE HEADER -->
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+            <div>
+              <h1 style="font-size: 22px; font-weight: 800; color: #0f172a; margin: 0 0 3px 0; letter-spacing: -0.02em;">P&amp;ID Analyzer</h1>
+              <div style="font-size: 13px; color: #64748b; font-weight: 500;">Explore. Understand. Ask. — From Your Plant Drawings.</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; color: #15803d; background: #dcfce7; padding: 4px 10px; border-radius: 9999px;">
+                <span style="width: 6px; height: 6px; border-radius: 50%; background: #16a34a;"></span>
+                Permanent Architecture
+              </span>
+              <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; color: #0369a1; background: #e0f2fe; padding: 4px 10px; border-radius: 9999px;">
+                <span style="width: 6px; height: 6px; border-radius: 50%; background: #0284c7;"></span>
+                Local / On-Premise
+              </span>
+            </div>
+          </div>
+
+          <!-- 2. ARCHITECTURE HEADER BAR -->
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 12px 18px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <div style="font-size: 13.5px; font-weight: 700; color: #14532d; margin-bottom: 2px;">
+                Permanent Architecture: <strong style="font-weight: 800;">P-201 Crude Feed Pump — Equipment Connections</strong>
+              </div>
+              <div style="font-size: 12px; color: #15803d; font-family: var(--font-mono, monospace);">
+                Architecture ID: <strong>MRPL-PID-PERMANENT-P201</strong> &nbsp;|&nbsp; Drawing No: <strong>MRPL-DWG-PID-P201-REV1</strong>
+              </div>
+            </div>
+            <div>
+              <span style="background: #fee2e2; color: #991b1b; font-size: 11.5px; font-weight: 700; padding: 5px 12px; border-radius: 9999px; border: 1px solid #fecaca; letter-spacing: 0.2px;">
+                Built-in <span style="color: #dc2626;">Permanent Reference</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- 3. HERO ELEMENT: P&ID DRAWING CONTAINER -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); text-align: center;">
+            <div style="background: #ffffff; border-radius: 8px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+              <img
+                id="pid-permanent-img"
+                src="/assets/pid_drawing_p201.png?v=3"
+                alt="MRPL - CDU II P-201 CRUDE FEED PUMP — EQUIPMENT CONNECTIONS"
+                style="width: 100%; max-height: 460px; object-fit: contain; border-radius: 6px; display: block;"
+              />
+            </div>
+            <div style="margin-top: 8px; font-size: 11px; color: #94a3b8; font-weight: 500;">
+              Permanent Architecture • P-201 Crude Feed Pump Equipment Connections (MRPL-DWG-PID-P201-REV1)
+            </div>
+          </div>
+
+          <!-- 4. FOUR TOPOLOGY CONCEPTS -->
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px;">
+            <!-- CARD 1: UPSTREAM -->
+            <div class="pid-concept-card" onclick="PIDManager.populateQuestion('What is upstream of P-201?')">
+              <div class="pid-concept-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+              </div>
+              <div>
+                <div class="pid-concept-title">UPSTREAM</div>
+                <div class="pid-concept-sub">What comes before?</div>
+              </div>
+            </div>
+
+            <!-- CARD 2: DOWNSTREAM -->
+            <div class="pid-concept-card" onclick="PIDManager.populateQuestion('What is downstream of P-201?')">
+              <div class="pid-concept-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+              <div>
+                <div class="pid-concept-title">DOWNSTREAM</div>
+                <div class="pid-concept-sub">What comes after?</div>
+              </div>
+            </div>
+
+            <!-- CARD 3: ISOLATES -->
+            <div class="pid-concept-card" onclick="PIDManager.populateQuestion('Which valves isolate P-201?')">
+              <div class="pid-concept-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 6h16M4 18h16M12 6v12M8 10l8 4M8 14l8-4"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="pid-concept-title">ISOLATES</div>
+                <div class="pid-concept-sub">What provides isolation?</div>
+              </div>
+            </div>
+
+            <!-- CARD 4: DISCHARGES -->
+            <div class="pid-concept-card" onclick="PIDManager.populateQuestion('Where does PSV-201 discharge?')">
+              <div class="pid-concept-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="pid-concept-title">DISCHARGES</div>
+                <div class="pid-concept-sub">Where does relief go?</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. ASK ABOUT THIS ARCHITECTURE -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+            <div style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">Ask About This Architecture</div>
+            <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+              <input
+                type="text"
+                id="pid-query-input"
+                class="form-input"
+                placeholder="Ask something about this architecture..."
+                value="What is upstream of P-201?"
+                style="flex: 1; height: 44px; font-size: 13.5px; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0 14px; background: #f8fafc; color: #0f172a;"
+              />
+              <button
+                id="btn-pid-ask"
+                class="btn"
+                onclick="PIDManager.askPID()"
+                style="background: #15803d; color: #ffffff; border: none; border-radius: 8px; padding: 0 22px; height: 44px; font-size: 13.5px; font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: background 0.15s ease;"
+                onmouseover="this.style.background='#166534'"
+                onmouseout="this.style.background='#15803d'"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                Ask P&amp;ID
+              </button>
+            </div>
+
+            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 12px; color: #64748b;">
+              <span style="font-weight: 600; color: #475569;">Try these examples:</span>
+              <button class="pid-suggestion-chip" onclick="PIDManager.populateQuestion('What is upstream of P-201?')">What is upstream of P-201?</button>
+              <button class="pid-suggestion-chip" onclick="PIDManager.populateQuestion('What is downstream of P-201?')">What is downstream of P-201?</button>
+              <button class="pid-suggestion-chip" onclick="PIDManager.populateQuestion('Which valves isolate P-201?')">Which valves isolate P-201?</button>
+              <button class="pid-suggestion-chip" onclick="PIDManager.populateQuestion('Where does PSV-201 discharge?')">Where does PSV-201 discharge?</button>
+              <button class="pid-suggestion-chip" onclick="PIDManager.populateQuestion('What is the service of P-201?')">What is the service of P-201?</button>
+            </div>
+          </div>
+
+          <!-- 6. ANSWER SECTION -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px;">
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 14.5px; font-weight: 700; color: #0f172a;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Answer
+              </div>
+              <div style="font-size: 11.5px; color: #64748b; font-weight: 500;">
+                Powered by MRPL Sovereign AI &nbsp;|&nbsp; Deterministic • Secure • On-Premise
+              </div>
+            </div>
+
+            <div id="pid-answer-placeholder" style="color: #94a3b8; font-size: 13px; padding: 8px 0;">
+              Your answer will appear here...
+            </div>
+
+            <div id="pid-query-result" style="display: none;"></div>
+          </div>
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────────
+             TAB: ROUTER & TRACE
+             ───────────────────────────────────────────────────────── -->
+        <div id="tab-trace" class="tab-section-content">
+          <div class="panel-card" style="margin-bottom: 16px;">
+            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+              <input type="text" id="trace-query-input" class="form-input" placeholder="Enter prompt to trace & score all models..." value="Write Python code to calculate corrosion rate when the original thickness is 5.0 mm, current thickness is 3.8 mm, and inspection interval is 4 years.">
+              <button id="btn-trace-run" class="btn btn-primary" onclick="TraceVisualizer.runDirectTrace()">Run Trace</button>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <button class="preset-tag cyan" onclick="TraceVisualizer.loadScenario('p201')">P-201 Knowledge RAG</button>
+              <button class="preset-tag" onclick="TraceVisualizer.loadScenario('corrosion')">Corrosion Rate Calc</button>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="panel-card">
+              <h3 style="font-size: 13.5px; font-weight: 700; margin-bottom: 8px;">Task Profile & Demands</h3>
+              <div style="font-size: 12px; line-height: 1.5;">
+                <div><strong>Domain:</strong> <span id="trace-task-type">Engineering Calculation</span></div>
+                <div><strong>Modality:</strong> <span id="trace-modality">TEXT</span></div>
+                <div><strong>Complexity:</strong> <span id="trace-complexity">0.70 / 1.00</span></div>
+                <div><strong>Context:</strong> <span id="trace-context">1,074 Tokens</span></div>
+                <div><strong>Intent:</strong> <span id="trace-intent" style="color: #15803d; font-family: 'JetBrains Mono', monospace;">calculate_corrosion_rate</span></div>
+              </div>
+              <div id="trace-cap-bars" style="margin-top: 10px;"></div>
+            </div>
+
+            <div class="panel-card">
+              <h3 style="font-size: 13.5px; font-weight: 700; margin-bottom: 8px;">Model Candidate Scoring</h3>
+              <table class="candidate-table">
+                <thead><tr><th>Model</th><th>Cap Match</th><th>Suitability</th><th>Status</th></tr></thead>
+                <tbody id="trace-candidates-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div id="trace-diagnostics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-top: 16px;"></div>
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────────
+             TAB: MODEL REGISTRY
+             ───────────────────────────────────────────────────────── -->
+        <div id="tab-registry" class="tab-section-content">
+          <div class="panel-card" style="margin-bottom: 16px;">
+            <div class="section-header-row">
+              <div>
+                <h2 style="font-size: 16px; font-weight: 700;">On-Premise Model Registry</h2>
+                <p style="font-size: 12px; color: #64748b;">Dynamic local discovery from Ollama.</p>
+              </div>
+              <div style="display: flex; gap: 6px;">
+                <button class="btn btn-secondary" onclick="Registry.runAllProbes()">Run Probes</button>
+                <button class="btn btn-primary" onclick="Registry.refreshModels()">Rescan Models</button>
+              </div>
+            </div>
+          </div>
+          <div id="registry-model-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px;"></div>
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────────
+             TAB: REPORT ASSISTANT
+             ───────────────────────────────────────────────────────── -->
+        <div id="tab-report-assistant" class="tab-section-content">
+          <div class="panel-card">
+            <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 10px;">Report Assistant & Statutory Deliverables</h2>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+              <div class="sample-task-item" onclick="Workbench.loadPrompt('Prepare an approval note for P-201.'); App.switchTab('home');">
+                <div class="task-icon-box green">📄</div>
+                <div class="task-title-bold">Approval Note (DOCX)</div>
+                <div class="task-prompt-snippet">Statutory continued operation approval document.</div>
+              </div>
+              <div class="sample-task-item" onclick="Workbench.loadPrompt('Create a presentation on P-201.'); App.switchTab('home');">
+                <div class="task-icon-box purple">📊</div>
+                <div class="task-title-bold">Executive Slide Deck (PPTX)</div>
+                <div class="task-prompt-snippet">4-slide integrity review presentation.</div>
+              </div>
+              <div class="sample-task-item" onclick="Workbench.loadPrompt('Create an Excel sheet containing inspection measurements.'); App.switchTab('home');">
+                <div class="task-icon-box green">📈</div>
+                <div class="task-title-bold">Measurement Matrix (XLSX)</div>
+                <div class="task-prompt-snippet">Multi-tab corrosion rate spreadsheet.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────────
+             TAB: VERIFICATION CENTER
+             ───────────────────────────────────────────────────────── -->
+        <div id="tab-verification" class="tab-section-content">
+          <div class="panel-card" style="margin-bottom: 16px;">
+            <h2 style="font-size: 16px; font-weight: 700;">Verification & Evidence Center</h2>
+            <p style="font-size: 12px; color: #64748b;">Multi-stage cross-examination and contradiction diagnostics.</p>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="panel-card">
+              <h4 style="font-size: 13px; font-weight: 700; margin-bottom: 8px;">Deterministic Engine Checks</h4>
+              <div id="vc-deterministic-details" style="font-size: 12px; color: #64748b;">Awaiting execution of a task.</div>
+            </div>
+            <div class="panel-card">
+              <h4 style="font-size: 13px; font-weight: 700; margin-bottom: 8px;">Cross-Validation Diagnostics</h4>
+              <div id="vc-crossmodel-details" style="font-size: 12px; color: #64748b;">Awaiting execution of a dual-model verified task.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────────
+             TAB: INDUSTRIAL INTEGRITY INVESTIGATION (PHASE 9)
+             ───────────────────────────────────────────────────────── -->
+        <div id="tab-integrity" class="tab-section-content">
+          <div class="integrity-container">
+
+            <!-- Top Case Workspace Bar -->
+            <div class="integrity-case-bar">
+              <div class="case-info-primary">
+                <span id="case-badge-tag" class="case-main-tag">E-801</span>
+                <div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <h3 id="case-header-title" style="font-size: 15px; font-weight: 700; color: #0f172a; margin: 0;">Integrity Investigation Case</h3>
+                    <span id="case-badge-risk" class="preset-tag low">LOW</span>
+                    <span id="case-badge-stage" class="preset-tag emerald">EVIDENCE_RECEIVED</span>
+                  </div>
+                  <div style="display: flex; gap: 12px; font-size: 11px; color: #64748b; margin-top: 2px;">
+                    <span id="case-badge-id">CASE-E-801-01</span>
+                    <span id="case-header-desc">Multi-year CML-01 wall thinning investigation.</span>
+                    <span id="case-header-hash" class="font-mono">SHA-256: --</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="case-actions-group">
+                <select id="integrity-case-select" class="model-dropdown-select" style="max-width: 260px;">
+                  <option value="">Loading Cases...</option>
+                </select>
+                <button class="btn btn-secondary" onclick="IntegrityManager.createNewCaseModal()">+ New Case</button>
+                <button class="btn btn-primary" onclick="IntegrityManager.loadDemonstration('E-801')" title="Load Historical CML-01 Wall Thinning Demo">
+                  Demo: E-801 (UT)
+                </button>
+                <button class="btn btn-primary" onclick="IntegrityManager.loadDemonstration('PSV-201')" title="Load PSV-201 Statutory Overhaul Demo">
+                  Demo: PSV-201 (IBR)
+                </button>
+              </div>
+            </div>
+
+            <!-- 8-Stage Stepper Navigation Bar -->
+            <div class="integrity-stepper-bar">
+              <button class="integrity-step-btn active" data-stage="evidence" data-stage-code="EVIDENCE_RECEIVED">
+                <span class="step-num">1</span>
+                <span>1. Evidence Docs</span>
+              </button>
+              <button class="integrity-step-btn" data-stage="observations" data-stage-code="OBSERVATIONS_EXTRACTED">
+                <span class="step-num">2</span>
+                <span>2. Observations</span>
+              </button>
+              <button class="integrity-step-btn" data-stage="sufficiency" data-stage-code="EVIDENCE_ASSESSED">
+                <span class="step-num">3</span>
+                <span>3. Sufficiency</span>
+              </button>
+              <button class="integrity-step-btn" data-stage="reconciliation" data-stage-code="RECONCILED">
+                <span class="step-num">4</span>
+                <span>4. Reconcile</span>
+              </button>
+              <button class="integrity-step-btn" data-stage="decision" data-stage-code="DECISION_EVALUATED">
+                <span class="step-num">5</span>
+                <span>5. Decision Gates</span>
+              </button>
+              <button class="integrity-step-btn" data-stage="human-review" data-stage-code="HUMAN_REVIEW_REQUIRED">
+                <span class="step-num">6</span>
+                <span>6. Human Review</span>
+              </button>
+              <button class="integrity-step-btn" data-stage="audit-trace" data-stage-code="COMPLETED">
+                <span class="step-num">7</span>
+                <span>7. Audit Trace</span>
+              </button>
+            </div>
+
+            <!-- Loader indicator -->
+            <div id="integrity-loader" style="display: none; align-items: center; gap: 8px; font-size: 12px; color: #15803d; padding: 6px 12px; background: #f0fdf4; border-radius: 6px; border: 1px solid #bbf7d0;">
+              <span class="green-dot-pulse"></span>
+              <span>Processing Sovereign Integrity Workflow...</span>
+            </div>
+
+            <!-- ──────────────── STAGE 1: EVIDENCE UPLOAD & REGISTRY ──────────────── -->
+            <div class="integrity-stage-panel active" id="stage-panel-evidence">
+              <div class="panel-card">
+                <div class="section-header-row">
+                  <div class="section-title-combo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                    <span class="section-title-txt">Registered Evidence Documents</span>
+                  </div>
+                  <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-secondary" onclick="IntegrityManager.handleAddEvidenceForm()">+ Add Document</button>
+                    <button class="btn btn-primary" onclick="IntegrityManager.runObservationExtraction()">Extract Observations →</button>
+                  </div>
+                </div>
+
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Document ID</th>
+                      <th>Filename</th>
+                      <th>Type</th>
+                      <th>Revision</th>
+                      <th>Approval Status</th>
+                      <th>Authority Tier</th>
+                      <th>Extraction Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="evidence-docs-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ──────────────── STAGE 2: OBSERVATIONS & PROVENANCE ──────────────── -->
+            <div class="integrity-stage-panel" id="stage-panel-observations">
+              <div class="panel-card">
+                <div class="section-header-row">
+                  <div class="section-title-combo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    <span class="section-title-txt">Extracted Discrete Observations</span>
+                    <span id="obs-total-count" class="preset-tag emerald" style="margin-left: 8px;">0 Records</span>
+                  </div>
+                  <div style="font-size: 11px; color: #15803d; background: #dcfce7; padding: 4px 8px; border-radius: 4px; font-weight: 600;">
+                    🛡️ Non-Destructive: Observations are NEVER averaged, merged, or overwritten
+                  </div>
+                </div>
+
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Observation ID</th>
+                      <th>Entity</th>
+                      <th>Property</th>
+                      <th>Value & Unit</th>
+                      <th>Date</th>
+                      <th>Location</th>
+                      <th>Approval</th>
+                      <th>Provenance</th>
+                    </tr>
+                  </thead>
+                  <tbody id="observations-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ──────────────── STAGE 3: EVIDENCE SUFFICIENCY ──────────────── -->
+            <div class="integrity-stage-panel" id="stage-panel-sufficiency">
+              <div id="sufficiency-content">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <!-- ──────────────── STAGE 4: MULTI-OBSERVATION RECONCILIATION ──────────────── -->
+            <div class="integrity-stage-panel" id="stage-panel-reconciliation">
+              <div id="reconciliation-content">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <!-- ──────────────── STAGE 5: DECISION GATES ──────────────── -->
+            <div class="integrity-stage-panel" id="stage-panel-decision">
+              <div id="decision-content">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <!-- ──────────────── STAGE 6: HUMAN REVIEW ──────────────── -->
+            <div class="integrity-stage-panel" id="stage-panel-human-review">
+              <div id="human-review-content">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <!-- ──────────────── STAGE 7: AUDIT TRACE TREE ──────────────── -->
+            <div class="integrity-stage-panel" id="stage-panel-audit-trace">
+              <div id="audit-trace-content">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────────
+             TAB: SOVEREIGNTY CENTER (AIR-GAP & OFFLINE PROOF)
+             ───────────────────────────────────────────────────────── -->
+        <div id="tab-sovereignty" class="tab-section-content">
+          
+          <!-- Header Banner -->
+          <div class="panel-card" style="margin-bottom: 16px; border: 1.5px solid #16a34a; background: linear-gradient(135deg, #ffffff, #f0fdf4);">
+            <div class="section-header-row" style="margin-bottom: 4px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 32px; height: 32px; background: #dcfce7; color: #15803d; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+                  🔒
+                </div>
+                <div>
+                  <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0;">SOVEREIGNTY CENTER</h2>
+                  <p style="font-size: 12px; color: #64748b; margin: 2px 0 0 0;">Verifiable On-Premise AI Infrastructure • 100% Local Inference • Zero Cloud Egress</p>
+                </div>
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <span class="preset-tag emerald font-bold" style="font-size: 11px; padding: 4px 10px;">
+                  ● AIR-GAP VERIFIED (SESSION)
+                </span>
+                <button id="btn-run-sovereignty-test" class="btn btn-primary" style="font-size: 12px; font-weight: 800; padding: 6px 14px; background: #16a34a; border-color: #15803d;" onclick="SovereigntyManager.runSovereigntyTest()">
+                  ⚡ RUN SOVEREIGNTY TEST
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3-Column Summary Cards -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 16px;">
+            
+            <!-- LOCAL AI INFRASTRUCTURE -->
+            <div class="panel-card">
+              <div class="section-header-row" style="margin-bottom: 8px;">
+                <span class="section-title-txt" style="font-size: 13px; color: #15803d;">LOCAL AI INFRASTRUCTURE</span>
+                <span class="preset-tag emerald">ACTIVE</span>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11.5px; line-height: 1.7; color: #334155;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #64748b;">Ollama Runtime</span>
+                  <strong id="sov-center-ollama" style="color: #15803d;"><span class="green-dot-pulse"></span> RUNNING</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #64748b;">Local Models</span>
+                  <strong id="sov-center-model-count">3 Available</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #64748b;">Local Inference</span>
+                  <strong id="sov-center-inf-state" style="color: #15803d;"><span class="green-dot-pulse"></span> ENABLED</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #64748b;">Endpoint</span>
+                  <code style="color: #0284c7;">127.0.0.1:11434</code>
+                </div>
+              </div>
+            </div>
+
+            <!-- NETWORK SECURITY -->
+            <div class="panel-card">
+              <div class="section-header-row" style="margin-bottom: 8px;">
+                <span class="section-title-txt" style="font-size: 13px; color: #15803d;">NETWORK SECURITY</span>
+                <span class="preset-tag emerald">ZERO EGRESS</span>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11.5px; line-height: 1.7; color: #334155;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #64748b;">External AI APIs</span>
+                  <strong id="sov-center-ext-apis" style="color: #15803d;">NONE</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #64748b;">External Calls</span>
+                  <strong id="sov-center-ext-calls" style="color: #15803d;">0</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #64748b;">Data Egress</span>
+                  <strong id="sov-center-egress" style="color: #15803d;">0 bytes</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #64748b;">Blocked Attempts</span>
+                  <strong style="color: #15803d;">0 (No egress tried)</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- MODEL EXECUTION STATUS -->
+            <div class="panel-card">
+              <div class="section-header-row" style="margin-bottom: 8px;">
+                <span class="section-title-txt" style="font-size: 13px; color: #15803d;">MODEL EXECUTION</span>
+                <span class="preset-tag cyan">REGISTRY</span>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11.5px; line-height: 1.7; color: #334155;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span>qwen3:4b</span>
+                  <span class="preset-tag emerald" style="font-size: 9.5px;">● LOCAL</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span>qwen2.5-coder:3b</span>
+                  <span class="preset-tag emerald" style="font-size: 9.5px;">● LOCAL</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span>qwen2.5vl:3b</span>
+                  <span class="preset-tag emerald" style="font-size: 9.5px;">● LOCAL</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #64748b;">Cloud Fallback</span>
+                  <span class="preset-tag ruby" style="font-size: 9.5px;">DISABLED</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Live Sovereignty Test Result Box (Populated on button click) -->
+          <div id="sov-test-result-box" style="display: none; margin-bottom: 16px;"></div>
+
+          <!-- 3-Tier Air-Gap Verification Levels -->
+          <div class="panel-card" style="margin-bottom: 16px;">
+            <div class="section-header-row" style="margin-bottom: 10px;">
+              <span class="section-title-txt">Air-Gap Verification Framework & Disclaimers</span>
+              <span style="font-size: 11px; color: #64748b;">Explicit Software vs Hardware Boundary</span>
+            </div>
+            <div id="sov-levels-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;"></div>
+          </div>
+
+          <!-- Network Event Monitor -->
+          <div class="panel-card" style="margin-bottom: 16px;">
+            <div class="section-header-row">
+              <div class="section-title-combo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                <span class="section-title-txt">NETWORK ACTIVITY & EVENT MONITOR</span>
+              </div>
+              <span class="preset-tag emerald">NO EXTERNAL TRAFFIC</span>
+            </div>
+            
+            <div style="overflow-x: auto; margin-top: 10px;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 11.5px; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 1.5px solid #e2e8f0; color: #475569; background: #f8fafc;">
+                    <th style="padding: 8px 10px;">Time</th>
+                    <th style="padding: 8px 10px;">Destination</th>
+                    <th style="padding: 8px 10px;">Type</th>
+                    <th style="padding: 8px 10px;">Status</th>
+                    <th style="padding: 8px 10px;">Payload</th>
+                  </tr>
+                </thead>
+                <tbody id="sov-network-tbody"></tbody>
+              </table>
+            </div>
+
+            <div id="sov-network-summary-text" style="margin-top: 12px; background: #f8fafc; padding: 10px 14px; border-radius: 6px; border: 1px solid #e2e8f0;"></div>
+            
+            <div style="font-size: 10.5px; color: #64748b; margin-top: 8px; font-style: italic;">
+              * Application-level sovereignty verified. OS-level network verification unavailable. Physical air-gap status must be verified by infrastructure controls.
+            </div>
+          </div>
+
+          <!-- Model Registry Local Status Table -->
+          <div class="panel-card">
+            <div class="section-header-row">
+              <span class="section-title-txt">ON-PREMISE MODEL REGISTRY LOCAL STATUS</span>
+              <button class="btn btn-secondary" style="font-size: 11px; padding: 4px 10px;" onclick="SovereigntyManager.fetchStatus()">↻ Refresh Telemetry</button>
+            </div>
+            
+            <div style="overflow-x: auto; margin-top: 10px;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 11.5px; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 1.5px solid #e2e8f0; color: #475569; background: #f8fafc;">
+                    <th style="padding: 8px 10px;">Model</th>
+                    <th style="padding: 8px 10px;">Location</th>
+                    <th style="padding: 8px 10px;">Provider</th>
+                    <th style="padding: 8px 10px;">Endpoint</th>
+                    <th style="padding: 8px 10px;">Downloaded</th>
+                    <th style="padding: 8px 10px;">External Provider</th>
+                    <th style="padding: 8px 10px;">Digest</th>
+                    <th style="padding: 8px 10px;">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="sov-models-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────────
+             TAB: SETTINGS, HELP, FEEDBACK
+             ───────────────────────────────────────────────────────── -->
+        <div id="tab-settings" class="tab-section-content">
+          <div class="panel-card" style="max-width: 700px;">
+            <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 10px;">Workbench Settings</h2>
+            <div style="font-size: 12px; line-height: 1.6;">
+              <p>✓ <strong>Ollama Local Endpoint:</strong> <code>http://127.0.0.1:11434</code></p>
+              <p>✓ <strong>Air-Gap Policy:</strong> STRICT ZERO-EGRESS ENFORCED</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-help" class="tab-section-content">
+          <div class="panel-card" style="max-width: 700px;">
+            <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 10px;">Help & Documentation</h2>
+            <p style="font-size: 12px; line-height: 1.5;">Type natural-language questions or instructions in the main Ask AI workspace.</p>
+          </div>
+        </div>
+
+        <div id="tab-feedback" class="tab-section-content">
+          <div class="panel-card" style="max-width: 700px;">
+            <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 10px;">User Feedback</h2>
+            <textarea class="form-input" rows="3" placeholder="Enter feedback..."></textarea>
+            <button class="btn btn-primary" style="margin-top: 8px;" onclick="alert('Feedback logged.')">Submit</button>
+          </div>
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────────
+             TAB: DYNAMIC MRPL ASSET REGISTRY & HIERARCHY (PHASE 10B)
+             ───────────────────────────────────────────────────────── -->
+        <div id="tab-asset-registry" class="tab-section-content">
+          <div class="asset-registry-layout">
+            
+            <!-- LEFT PANE: Hierarchy Tree / Asset Cards -->
+            <div class="registry-sidebar-pane">
+              <div class="registry-search-bar">
+                <input type="text" id="asset-search-input" class="form-input" placeholder="Search tag, equipment, service (e.g. P-201, PSV-301)...">
+                <div class="registry-filter-row">
+                  <select id="asset-class-filter">
+                    <option value="all">All Asset Classes</option>
+                    <option value="PUMP">Pumps (P)</option>
+                    <option value="PRESSURE_VESSEL">Pressure Vessels (V)</option>
+                    <option value="STORAGE_TANK">Storage Tanks (TK)</option>
+                    <option value="VALVE">Valves & PSVs (PSV/XV)</option>
+                    <option value="HEAT_EXCHANGER">Heat Exchangers (E)</option>
+                    <option value="COMPRESSOR">Compressors (K)</option>
+                    <option value="COLUMN">Columns (C)</option>
+                    <option value="REACTOR">Reactors (R)</option>
+                    <option value="FIRED_HEATER">Fired Heaters (F)</option>
+                    <option value="PIPING">Piping Circuits</option>
+                    <option value="INSTRUMENT">Instruments</option>
+                    <option value="ELECTRICAL">Electrical Equipment</option>
+                  </select>
+                  <select id="asset-unit-filter">
+                    <option value="all">All Units</option>
+                    <option value="CDU-I">CDU-I</option>
+                    <option value="CDU-II">CDU-II</option>
+                    <option value="VDU">VDU</option>
+                    <option value="HCU">HCU</option>
+                    <option value="OM&S">OM&S</option>
+                    <option value="UTILITY">Utility</option>
+                  </select>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                  <span id="asset-total-count" style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Loading...</span>
+                  <button class="btn btn-primary" style="font-size: 11px; padding: 4px 8px;" onclick="AssetRegistryManager.openAddAssetModal()">+ Add Asset</button>
+                </div>
+              </div>
+
+              <div class="registry-view-toggle">
+                <div class="view-toggle-btn active" onclick="this.parentElement.querySelectorAll('.view-toggle-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active'); document.getElementById('hierarchy-tree-container').style.display='block'; document.getElementById('asset-grid-container').style.display='none';">
+                  🌲 Hierarchy Tree
+                </div>
+                <div class="view-toggle-btn" onclick="this.parentElement.querySelectorAll('.view-toggle-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active'); document.getElementById('hierarchy-tree-container').style.display='none'; document.getElementById('asset-grid-container').style.display='block';">
+                  📋 Asset Cards
+                </div>
+              </div>
+
+              <div class="registry-scroll-area">
+                <div id="hierarchy-tree-container"></div>
+                <div id="asset-grid-container" style="display: none;"></div>
+              </div>
+            </div>
+
+            <!-- RIGHT PANE: Dynamic Asset Dossier -->
+            <div class="registry-dossier-pane" id="asset-dossier-container">
+              <!-- Populated dynamically via AssetRegistryManager.renderAssetDossier() -->
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FOOTER STATUS BAR -->
+      <footer class="app-footer-bar">
+        <span>| Internal Use Only | Confidential</span>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span class="footer-online-pill"><span class="green-dot-pulse"></span> System Online</span>
+          <span id="live-time-display">04 Sep 2026 18:25</span>
+        </div>
+      </footer>
+
+    </div>
+
+  </div>
+
+  <!-- ─────────────────────────────────────────────────────────────
+       FULL-SCREEN HUMAN REVIEW & VERIFICATION WORKSPACE
+       ───────────────────────────────────────────────────────────── -->
+  <!-- ─────────────────────────────────────────────────────────────
+       FULL-SCREEN HUMAN REVIEW & VERIFICATION WORKSPACE (REVIEW GATE)
+       ───────────────────────────────────────────────────────────── -->
+  <div class="workspace-fullscreen-backdrop" id="human-verification-workspace" style="display: none;">
+    <div class="workspace-fullscreen-window">
+      
+      <!-- Workspace Top Header -->
+      <div class="workspace-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 22px;">🛡️</span>
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <h2 style="font-size: 16px; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; margin: 0;">APPROVAL NOTE — AI GENERATED DRAFT</h2>
+              <span id="ws-status-badge" class="ws-status-pill pending">PENDING HUMAN REVIEW</span>
+            </div>
+            <div style="font-size: 11.5px; color: #a7f3d0; margin-top: 2px;">
+              Asset: <strong id="ws-asset-tag">P-201</strong> &nbsp;•&nbsp; Source Report: <strong id="ws-report-name">MRPL-INSP-2024-P201.pdf</strong> &nbsp;•&nbsp; Version: <strong id="ws-version-tag" style="color: #fef08a;">v1.0 — AI Draft</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lifecycle Stepper / Pipeline Gate Indicator -->
+        <div class="ws-pipeline-stepper" style="display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: var(--font-mono); background: rgba(0,0,0,0.35); padding: 6px 14px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.12);">
+          <span id="ws-step-draft" style="color: #86efac; font-weight: 700;">1. AI Draft ✓</span>
+          <span style="color: #64748b;">➔</span>
+          <span id="ws-step-review" style="color: var(--accent-cyan); font-weight: 800; background: rgba(0,240,255,0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--accent-cyan);">2. Human Review (Active Gate)</span>
+          <span style="color: #64748b;">➔</span>
+          <span id="ws-step-approved" style="color: #94a3b8;">3. Approved Note</span>
+          <span style="color: #64748b;">➔</span>
+          <span id="ws-step-docx" style="color: #94a3b8;">4. Downloadable DOCX</span>
+        </div>
+
+        <button style="background: none; border: none; color: #ffffff; font-size: 20px; cursor: pointer; padding: 4px 8px;" onclick="Workbench.closeVerificationWorkspace()">✕</button>
+      </div>
+
+      <!-- Workspace 2-Column Body -->
+      <div class="workspace-body-grid">
+
+        <!-- LEFT COLUMN: A. SUMMARY & C. EVIDENCE / PROVENANCE -->
+        <div class="workspace-col-left">
+
+          <!-- A. APPROVAL NOTE SUMMARY (Short Human-Readable Summary + Fact Breakdown) -->
+          <div class="ws-section-card" style="border-left: 4px solid var(--accent-cyan);">
+            <div class="ws-section-header">
+              <span style="font-weight: 800; font-size: 13.5px; color: var(--text-dark); display: flex; align-items: gap 6px;">
+                <span class="ws-sec-num">A</span> APPROVAL NOTE SUMMARY
+              </span>
+              <span class="ws-pill cyan">EXECUTIVE BRIEF</span>
+            </div>
+            
+            <!-- Human-readable narrative summary box -->
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px 14px; margin-bottom: 12px; font-size: 12.5px; line-height: 1.55; color: #166534;">
+              <strong style="color: #15803d;">Executive Recommendation:</strong>
+              <div id="ws-narrative-summary" style="margin-top: 4px;">
+                Approval is requested for continued operation of P-201 based on the 2024 inspection findings. The minimum measured casing thickness is 4.50 mm compared with a minimum allowable thickness of 3.50 mm. The corrosion rate of 0.30 mm/year is calculated from the verified 2019 and 2024 thickness measurements.
+              </div>
+            </div>
+
+            <!-- Distinct 3-Tier Categorization Grid -->
+            <div style="display: grid; grid-template-columns: 1fr; gap: 8px;">
+              <!-- 1. MRPL Verified Facts -->
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 3px solid #16a34a; border-radius: 4px; padding: 8px 12px; font-size: 11.5px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <strong style="color: #15803d; text-transform: uppercase; font-size: 11px;">🟢 MRPL VERIFIED Facts</strong>
+                  <span class="ws-pill emerald" style="font-size: 9.5px;">Direct Record</span>
+                </div>
+                <div id="ws-facts-verified" style="color: #334155; line-height: 1.5;">
+                  • Baseline Casing Thickness: <strong>6.00 mm</strong> (Commissioning Survey 2019)<br>
+                  • Current Measured Thickness: <strong>4.50 mm</strong> (Grid C1-C8, Turnaround 2024)<br>
+                  • Statutory Retirement Limit (t_min): <strong>3.50 mm</strong> (ASME B31.3 / API 570)<br>
+                  • Vibration Level: <strong>3.2 mm/s RMS</strong> (ISO 10816 Zone A/B Compliant)
+                </div>
+              </div>
+
+              <!-- 2. Calculated Values -->
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 3px solid #0284c7; border-radius: 4px; padding: 8px 12px; font-size: 11.5px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <strong style="color: #0284c7; text-transform: uppercase; font-size: 11px;">🔵 CALCULATED Values (API 570 Deterministic Math)</strong>
+                  <span class="ws-pill cyan" style="font-size: 9.5px;">Pure Arithmetic</span>
+                </div>
+                <div id="ws-facts-calculated" style="color: #334155; line-height: 1.5;">
+                  • Total Metal Loss: <strong>1.50 mm</strong> (Δt = 6.00 - 4.50 = 1.50 mm)<br>
+                  • Long-Term Corrosion Rate: <strong>0.30 mm/year</strong> (CR = 1.50 / 5.00 yrs)<br>
+                  • Thickness Safety Margin: <strong>1.00 mm</strong> (4.50 - 3.50 = 1.00 mm above t_min)<br>
+                  • Remaining Safe Operating Life: <strong>3.33 years</strong> (RL = 1.00 / 0.30)
+                </div>
+              </div>
+
+              <!-- 3. AI-Generated Reasoning & Recommendations -->
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 3px solid #d97706; border-radius: 4px; padding: 8px 12px; font-size: 11.5px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <strong style="color: #d97706; text-transform: uppercase; font-size: 11px;">🟡 AI-Generated Reasoning & Recommendations</strong>
+                  <span class="ws-pill amber" style="font-size: 9.5px;">AI Synthesis</span>
+                </div>
+                <div id="ws-facts-reasoning" style="color: #334155; line-height: 1.5;">
+                  • Grant formal technical approval for continued unconstrained operation of P-201 in CDU-II.<br>
+                  • Maintain 18-month non-intrusive ultrasonic thickness spot checks in AIMS.<br>
+                  • Re-assess casing thickness during the scheduled 2027 statutory turnaround.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- C. EVIDENCE & PROVENANCE (Claims & Retrieved Chunks) -->
+          <div class="ws-section-card">
+            <div class="ws-section-header">
+              <span style="font-weight: 800; font-size: 13.5px; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
+                <span class="ws-sec-num">C</span> EVIDENCE & PROVENANCE TRACE
+              </span>
+              <div style="display: flex; gap: 4px;">
+                <span class="ws-pill emerald">MRPL VERIFIED</span>
+                <span class="ws-pill cyan">CALCULATED</span>
+                <span class="ws-pill amber">AI INFERENCE</span>
+              </div>
+            </div>
+
+            <!-- Claims List -->
+            <div id="ws-claims-list" class="ws-claims-container" style="max-height: 240px; overflow-y: auto;"></div>
+
+            <!-- Retrieved Chunks -->
+            <div style="margin-top: 10px; border-top: 1px solid #e2e8f0; padding-top: 10px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <strong style="font-size: 11.5px; color: #475569; text-transform: uppercase;">Retrieved Grounding Chunks (Hybrid RAG)</strong>
+                <span id="ws-evidence-count-badge" class="ws-pill cyan">4 CHUNKS</span>
+              </div>
+              <div id="ws-retrieved-evidence-list" class="ws-evidence-list" style="max-height: 200px; overflow-y: auto;"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: B. APPROVAL NOTE PREVIEW + D. EDITING + E. APPROVAL + F. SUCCESS -->
+        <div class="workspace-col-right">
+
+          <!-- B. APPROVAL NOTE PREVIEW & D. HUMAN EDITING -->
+          <div class="ws-section-card" style="border: 2px solid #16a34a;">
+            <div class="ws-section-header" style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-weight: 800; font-size: 13.5px; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
+                <span class="ws-sec-num">B</span> APPROVAL NOTE PREVIEW
+                <span id="ws-draft-edit-badge" class="ws-pill cyan" style="margin-left: 6px;">v1.0 (AI Draft)</span>
+              </span>
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <button id="ws-btn-toggle-edit" class="btn btn-secondary" style="font-size: 11.5px; padding: 4px 10px; font-weight: 700;" onclick="Workbench.toggleDraftEdit()">
+                  ✏️ Edit Draft
+                </button>
+                <button class="btn btn-secondary" style="font-size: 11.5px; padding: 4px 8px;" onclick="Workbench.promptAIRevisionModal()">
+                  🔄 Request Revision
+                </button>
+              </div>
+            </div>
+
+            <!-- AI Revision Box (expandable) -->
+            <div id="ws-revision-prompt-box" style="display: none; margin-bottom: 10px; background: #fffbeb; border: 1px solid #fde68a; padding: 10px; border-radius: 4px;">
+              <label style="font-size: 11px; font-weight: 700; color: #b45309; display: block; margin-bottom: 4px;">Revision Instructions for Sovereign Local AI:</label>
+              <input type="text" id="ws-ai-revision-input" class="form-input" placeholder="e.g. Add 18-month UT surveillance protocol and sign-off table...">
+              <div style="display: flex; justify-content: flex-end; gap: 6px; margin-top: 6px;">
+                <button class="btn btn-secondary" style="font-size: 11px; padding: 3px 8px;" onclick="document.getElementById('ws-revision-prompt-box').style.display='none'">Cancel</button>
+                <button id="ws-btn-submit-revision" class="btn btn-primary" style="font-size: 11px; padding: 3px 12px;" onclick="Workbench.submitAIRevision()">Regenerate Draft with AI</button>
+              </div>
+            </div>
+
+            <!-- Document Style Sheet Preview Container -->
+            <div id="ws-approval-preview-container" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 4px; padding: 16px 20px; font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; line-height: 1.6; color: #1e293b; max-height: 380px; overflow-y: auto; box-shadow: inset 0 1px 4px rgba(0,0,0,0.05);">
+              <div id="ws-approval-rendered-doc"></div>
+            </div>
+
+            <!-- Editable Textarea (Hidden by default until 'Edit Draft' clicked) -->
+            <div id="ws-approval-edit-container" style="display: none;">
+              <textarea id="ws-approval-textarea" class="ws-textarea-approval" rows="14" style="width: 100%; font-family: var(--font-mono); font-size: 11.5px; line-height: 1.5; padding: 10px; border: 1.5px solid var(--accent-cyan); border-radius: 4px;" placeholder="Edit approval note draft text..."></textarea>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; font-size: 11px; color: #64748b;">
+                <span>* Human edits will be tracked under Change History and included in final DOCX.</span>
+                <button class="btn btn-primary" style="font-size: 11px; padding: 4px 12px;" onclick="Workbench.applyDraftEdits()">Done Editing</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- E. HUMAN REVIEW & APPROVAL AREA -->
+          <div class="ws-section-card" style="background: #f8fafc; border: 2px solid #94a3b8;">
+            <div class="ws-section-header">
+              <span style="font-weight: 800; font-size: 13.5px; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
+                <span class="ws-sec-num">E</span> HUMAN REVIEW & STATUTORY APPROVAL GATE
+              </span>
+              <span class="ws-pill emerald font-bold">PSU SOVEREIGN GATE</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+              <div>
+                <label style="font-size: 10.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 2px;">Reviewer Name & Designation:</label>
+                <input type="text" id="ws-reviewer-name" class="form-input" value="Senior Inspection Engineer / PSU Asset Integrity Lead">
+              </div>
+              <div>
+                <label style="font-size: 10.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 2px;">Department / Area:</label>
+                <input type="text" id="ws-reviewer-dept" class="form-input" value="Technical Services & Asset Integrity (CDU-II)">
+              </div>
+            </div>
+
+            <div style="margin-top: 6px;">
+              <label style="font-size: 10.5px; font-weight: 700; color: #475569; display: block; margin-bottom: 2px;">Reviewer Comments / Technical Reasoning:</label>
+              <textarea id="ws-reviewer-notes" class="ws-textarea-styled" rows="2" placeholder="e.g. Verified API 570 calculations and ultrasonic thickness records. Asset is compliant for continued operation.">All API 570 deterministic calculations and ultrasonic casing thickness measurements verified against 2019/2024 MRPL inspection records. Clearance recommended for continued unconstrained operation.</textarea>
+            </div>
+
+            <!-- Action Buttons Grid with Primary APPROVE & GENERATE DOCX Button -->
+            <div style="display: flex; gap: 10px; margin-top: 12px; align-items: center; flex-wrap: wrap;">
+              <button class="btn btn-secondary" style="padding: 10px 16px; font-weight: 700; font-size: 12px; display: inline-flex; align-items: center; gap: 6px;" onclick="Workbench.saveDraftChanges()">
+                💾 Save Changes
+              </button>
+              
+              <button id="ws-btn-approve-generate" class="btn btn-primary" style="flex: 1; padding: 12px 24px; font-weight: 800; font-size: 13.5px; background: #16a34a; border: 1.5px solid #15803d; color: #ffffff; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 0 16px rgba(22, 163, 74, 0.4); text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer;" onclick="Workbench.approveAndGenerateFinalDocx()">
+                🚀 Approve & Generate DOCX
+              </button>
+
+              <button id="ws-btn-reject" class="btn btn-secondary" style="padding: 10px 14px; font-weight: 700; font-size: 12px; color: #dc2626; border-color: #fca5a5;" onclick="Workbench.submitHumanApproval('reject')">
+                🚫 Reject
+              </button>
+
+              <button class="btn btn-secondary" style="padding: 10px 14px; font-weight: 700; font-size: 12px; color: #b45309;" onclick="Workbench.promptAIRevisionModal()">
+                🔄 Request Revision
+              </button>
+            </div>
+          </div>
+
+          <!-- F. AFTER HUMAN APPROVAL: PROMINENT SUCCESS STATE -->
+          <div id="ws-final-document-section" class="ws-section-card" style="display: none; border: 2.5px solid #16a34a; background: #f0fdf4;">
+            <div class="ws-section-header" style="border-bottom: 1.5px solid #bbf7d0; padding-bottom: 8px;">
+              <span style="font-weight: 800; font-size: 14px; color: #15803d; display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 18px;">✅</span> APPROVAL NOTE APPROVED & DOCX GENERATED
+              </span>
+              <span class="ws-pill emerald font-bold">STATUTORILY SEALED</span>
+            </div>
+
+            <div style="padding: 10px 0;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="font-size: 32px;">📄</span>
+                  <div>
+                    <h4 id="ws-final-doc-filename" style="margin: 0; font-size: 15px; font-weight: 800; color: #15803d;">Approval_Note_P201_v1.docx</h4>
+                    <div style="font-size: 11px; color: #64748b; font-family: var(--font-mono); margin-top: 2px;" id="ws-final-doc-checksum">SHA-256: --</div>
+                  </div>
+                </div>
+                <a id="ws-final-doc-download-btn" href="#" download class="btn btn-primary" style="padding: 10px 22px; font-size: 13px; font-weight: 800; background: #16a34a; border: 1.5px solid #15803d; text-decoration: none; box-shadow: 0 0 12px rgba(22, 163, 74, 0.35);">
+                  ⬇️ Download DOCX
+                </a>
+              </div>
+
+              <!-- Provenance Lineage of Generated DOCX -->
+              <div style="background: rgba(255,255,255,0.8); border: 1px solid #bbf7d0; border-radius: 4px; padding: 10px 12px; font-size: 11.5px; color: #334155; line-height: 1.5;">
+                <strong style="color: #15803d;">Generated from:</strong>
+                <ul style="margin: 4px 0 0 0; padding-left: 18px;">
+                  <li>Source inspection report: <strong id="ws-gen-src-doc">MRPL-INSP-2024-P201.pdf</strong></li>
+                  <li>Retrieved MRPL evidence: <strong>Verified local knowledge chunks (4 items)</strong></li>
+                  <li>Verified calculations: <strong>API 570 deterministic math (CR 0.30 mm/yr, RL 3.33 yrs)</strong></li>
+                  <li>Human-reviewed draft: <strong id="ws-gen-reviewer">Approved & signed by Senior Inspection Engineer</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Formula Calculator Modal -->
+  <div class="modal-backdrop" id="calc-modal" style="display: none;">
+    <div class="modal-content" style="width: 480px;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <h3 id="calc-modal-title" style="font-size: 15px; font-weight: 700; color: #15803d;">--</h3>
+        <button style="background:none;border:none;font-size:18px;cursor:pointer;" onclick="FormulaManager.closeModal()">&times;</button>
+      </div>
+      <div style="background: #f1f5f9; padding: 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #15803d; margin-bottom: 8px;" id="calc-modal-eq">--</div>
+      <div id="calc-modal-inputs" style="margin-bottom: 10px; max-height: 200px; overflow-y: auto;"></div>
+      <div id="calc-modal-result" style="display: none; margin-bottom: 10px; padding: 8px; background: #dcfce7; border-radius: 6px;"></div>
+      <div style="display: flex; justify-content: flex-end; gap: 6px;">
+        <button class="btn btn-secondary" onclick="FormulaManager.closeModal()">Close</button>
+        <button class="btn btn-primary" id="calc-modal-exec-btn">Execute Python Arithmetic</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Activity History Modal -->
+  <div class="modal-backdrop" id="activity-history-modal" style="display: none;">
+    <div class="modal-content" style="width: 720px; max-width: 95vw;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 24px; height: 24px; background: #dcfce7; color: #15803d; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <span style="font-size: 15px; font-weight: 700; color: #0f172a;">Engineering Activity & History</span>
+        </div>
+        <button style="background:none; border:none; font-size: 20px; cursor: pointer; color: #64748b;" onclick="ActivityHistory.closeModal()">&times;</button>
+      </div>
+
+      <!-- Filter Controls Bar -->
+      <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 12px;">
+        <input type="text" id="history-search-input" placeholder="Search activities, queries, equipment tags (e.g. P-201)..." class="form-input" style="flex: 1; padding: 6px 10px; font-size: 12px;" oninput="ActivityHistory.searchAndFilter()">
+        <select id="history-type-filter" class="model-dropdown-select" style="font-size: 12px;" onchange="ActivityHistory.searchAndFilter()">
+          <option value="all">All Operations</option>
+          <option value="PDF">PDF Documents</option>
+          <option value="DOCX">DOCX Deliverables</option>
+          <option value="XLS">Excel Calculations</option>
+          <option value="IMG">P&ID Diagrams</option>
+          <option value="RAG">Knowledge Queries</option>
+        </select>
+        <button class="btn btn-secondary" style="font-size: 11px; padding: 5px 10px; color: #dc2626;" onclick="ActivityHistory.clearAllHistory()">🗑 Clear</button>
+      </div>
+
+      <!-- History Items List Container -->
+      <div id="history-modal-items-list" style="max-height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+        <!-- Populated dynamically from /api/history -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; padding-top: 10px;">
+        <span id="history-modal-count" style="font-size: 11.5px; color: #64748b;">Showing records</span>
+        <button class="btn btn-secondary" onclick="ActivityHistory.closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Add Asset Modal -->
+  <div class="modal-backdrop" id="add-asset-modal" style="display: none;">
+    <div class="modal-content" style="width: 580px; max-width: 95vw;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 24px; height: 24px; background: #dcfce7; color: #15803d; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px;">➕</div>
+          <span style="font-size: 15px; font-weight: 700; color: #0f172a;">Register New Equipment Asset</span>
+        </div>
+        <button style="background:none; border:none; font-size: 20px; cursor: pointer; color: #64748b;" onclick="AssetRegistryManager.closeAddAssetModal()">&times;</button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px; max-height: 70vh; overflow-y: auto; padding-right: 4px;">
+        <div class="form-group-row">
+          <div class="form-col">
+            <label>Asset Class:</label>
+            <select id="modal-asset-class" class="form-input" onchange="AssetRegistryManager.updateClassSpecificFormFields()">
+              <option value="PUMP">Pump (P)</option>
+              <option value="VALVE">Valve & Safety Relief (PSV/XV)</option>
+              <option value="PRESSURE_VESSEL">Pressure Vessel (V)</option>
+              <option value="STORAGE_TANK">Storage Tank (TK)</option>
+              <option value="HEAT_EXCHANGER">Heat Exchanger (E)</option>
+              <option value="COMPRESSOR">Compressor (K)</option>
+              <option value="COLUMN">Column / Tower (C)</option>
+              <option value="REACTOR">Reactor (R)</option>
+              <option value="FIRED_HEATER">Fired Heater (F)</option>
+              <option value="PIPING">Piping Circuit</option>
+              <option value="INSTRUMENT">Instrument</option>
+              <option value="ELECTRICAL">Electrical Equipment</option>
+              <option value="OTHER">Other Equipment Class</option>
+            </select>
+          </div>
+          <div class="form-col">
+            <label>Asset Tag (e.g. PSV-301, E-301):</label>
+            <input type="text" id="modal-asset-tag" class="form-input font-mono font-bold" placeholder="e.g. PSV-301">
+          </div>
+        </div>
+
+        <div class="form-group-row">
+          <div class="form-col">
+            <label>Asset Name / Title:</label>
+            <input type="text" id="modal-asset-name" class="form-input" placeholder="e.g. Atmospheric Column Overhead Relief Valve">
+          </div>
+          <div class="form-col">
+            <label>Process Unit:</label>
+            <select id="modal-asset-unit" class="form-input">
+              <option value="CDU-I">CDU-I (Unit 1)</option>
+              <option value="CDU-II" selected>CDU-II (Unit 2)</option>
+              <option value="VDU">VDU (Vacuum Distillation)</option>
+              <option value="HCU">HCU (Hydrocracker)</option>
+              <option value="OM&S">OM&S (Storage Tanks)</option>
+              <option value="UTILITY">Utilities & Offsites</option>
+              <option value="DCU">DCU (Delayed Coker)</option>
+              <option value="CCR">CCR (Reformer)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group-row">
+          <div class="form-col">
+            <label>Operating Service Description:</label>
+            <input type="text" id="modal-asset-service" class="form-input" placeholder="e.g. Overhead Hydrocarbon Vapor Relief to Flare">
+          </div>
+          <div class="form-col">
+            <label>Operational Status:</label>
+            <select id="modal-asset-status" class="form-input">
+              <option value="IN_SERVICE" selected>IN_SERVICE</option>
+              <option value="STANDBY">STANDBY</option>
+              <option value="MAINTENANCE_OUTAGE">MAINTENANCE_OUTAGE</option>
+              <option value="COMMISSIONING">COMMISSIONING</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dynamic Class-Specific Form Fields -->
+        <div style="border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; background: #f8fafc;">
+          <label style="font-size: 11.5px; font-weight: 700; color: #15803d; display: block; margin-bottom: 6px;">Class-Specific Engineering Attributes:</label>
+          <div id="class-specific-fields-container"></div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; border-top: 1px solid #e2e8f0; padding-top: 10px;">
+        <button class="btn btn-secondary" onclick="AssetRegistryManager.closeAddAssetModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="AssetRegistryManager.submitNewAsset()">Register Asset (Zero Schema Change)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Upload Document Modal -->
+  <div class="modal-backdrop" id="upload-doc-modal" style="display: none;">
+    <div class="modal-content" style="width: 580px; max-width: 95vw;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 24px; height: 24px; background: #dcfce7; color: #15803d; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px;">📤</div>
+          <span style="font-size: 15px; font-weight: 700; color: #0f172a;">Add / Upload Document to Asset</span>
+        </div>
+        <button style="background:none; border:none; font-size: 20px; cursor: pointer; color: #64748b;" onclick="AssetRegistryManager.closeUploadDocModal()">&times;</button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px; max-height: 70vh; overflow-y: auto;">
+        <div class="form-group-row">
+          <div class="form-col">
+            <label>Target Asset Tag:</label>
+            <input type="text" id="modal-doc-asset-tag" class="form-input font-mono font-bold" readonly>
+          </div>
+          <div class="form-col">
+            <label>Document Number / ID:</label>
+            <input type="text" id="modal-doc-number" class="form-input font-mono" placeholder="e.g. MRPL-CAL-2026-PSV301-01">
+          </div>
+        </div>
+
+        <div class="form-group-row">
+          <div class="form-col">
+            <label>Document Title:</label>
+            <input type="text" id="modal-doc-title" class="form-input" placeholder="e.g. PSV-301 Annual Pop Test & Calibration Certificate 2026">
+          </div>
+          <div class="form-col">
+            <label>Document Type:</label>
+            <select id="modal-doc-type" class="form-input">
+              <option value="Inspection Reports">Inspection Report</option>
+              <option value="Test Certificates">Test Certificate / Pop Test</option>
+              <option value="Maintenance Records">Maintenance / Overhaul Record</option>
+              <option value="Datasheets">Engineering Datasheet</option>
+              <option value="P&IDs">P&ID Drawing / Diagram</option>
+              <option value="SOPs">SOP / Operating Procedure</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group-row">
+          <div class="form-col">
+            <label>Document / Test Date:</label>
+            <input type="date" id="modal-doc-date" class="form-input">
+          </div>
+        </div>
+
+        <div>
+          <label style="font-size: 11.5px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; display: block;">Document Engineering Text Content (Will be indexed incrementally into Hybrid RAG):</label>
+          <textarea id="modal-doc-content" class="form-input font-mono" rows="8" placeholder="Paste report text, test results, measurements, or observations..."></textarea>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; border-top: 1px solid #e2e8f0; padding-top: 10px;">
+        <button class="btn btn-secondary" onclick="AssetRegistryManager.closeUploadDocModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="AssetRegistryManager.submitUploadDocument()">Index into Hybrid RAG & Attach</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Provenance Detail Modal -->
+  <div class="modal-backdrop" id="asset-provenance-modal" style="display: none;">
+    <div class="modal-content" style="width: 520px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">
+        <h3 style="font-size: 14.5px; font-weight: 700; color: #15803d; margin: 0;">📜 Exact Observation Provenance</h3>
+        <button style="background:none; border:none; font-size: 18px; cursor: pointer;" onclick="AssetRegistryManager.closeProvenanceModal()">&times;</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
+        <div class="spec-row"><span class="spec-label">Document ID:</span> <span id="prov-modal-doc-id" class="spec-val font-mono font-bold"></span></div>
+        <div class="spec-row"><span class="spec-label">Document Name:</span> <span id="prov-modal-doc-name" class="spec-val"></span></div>
+        <div class="spec-row"><span class="spec-label">Section & Page:</span> <span id="prov-modal-location" class="spec-val font-bold"></span></div>
+        <div class="spec-row"><span class="spec-label">Authority Level:</span> <span id="prov-modal-authority" class="spec-val"></span></div>
+        <div class="spec-row"><span class="spec-label">Approval Status:</span> <span id="prov-modal-status" class="spec-val text-green font-bold"></span></div>
+        <div style="margin-top: 6px;">
+          <strong style="color: #0f172a; display: block; margin-bottom: 4px;">Exact Extracted Text Span:</strong>
+          <div id="prov-modal-span" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 11px; line-height: 1.5; color: #334155;"></div>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: flex-end; margin-top: 12px;">
+        <button class="btn btn-secondary" onclick="AssetRegistryManager.closeProvenanceModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/telemetry.js"></script>
+  <script src="/js/registry.js"></script>
+  <script src="/js/trace.js"></script>
+  <script src="/js/benchmark.js"></script>
+  <script src="/js/workbench.js"></script>
+  <script src="/js/engineering_modules.js"></script>
+  <script src="/js/integrity_investigation.js"></script>
+  <script src="/js/asset_registry.js"></script>
+  <script src="/js/app.js"></script>
+
+  <!-- Live Time Updater -->
+  <script>
+    function updateLiveTime() {
+      const el = document.getElementById("live-time-display");
+      if (el) {
+        const d = new Date();
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const day = String(d.getDate()).padStart(2, '0');
+        const month = months[d.getMonth()];
+        const year = d.getFullYear();
+        const hrs = String(d.getHours()).padStart(2, '0');
+        const mins = String(d.getMinutes()).padStart(2, '0');
+        el.textContent = `${day} ${month} ${year}  ${hrs}:${mins}`;
+      }
+    }
+    setInterval(updateLiveTime, 1000);
+    updateLiveTime();
+  </script>
+  <!-- Provenance Side Drawer (Phase 9C) -->
+  <div id="provenance-drawer" class="provenance-drawer">
+    <div class="prov-drawer-header">
+      <h4 style="margin: 0; font-size: 14px; font-weight: 700; color: #0f172a;">Observation Provenance Inspector</h4>
+      <button style="background:none; border:none; font-size: 20px; cursor: pointer; color: #64748b;" onclick="IntegrityManager.closeProvenanceDrawer()">&times;</button>
+    </div>
+    <div id="provenance-drawer-content" class="prov-drawer-body">
+      <!-- Populated on click -->
+    </div>
+  </div>
+
+</body>
+</html>

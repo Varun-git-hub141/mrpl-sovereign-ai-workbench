@@ -1,0 +1,56 @@
+{
+  "formula_id": "SHEET-001",
+  "formula_name": "Arithmetic Sum of Grid Inspection Readings",
+  "category": "spreadsheet",
+  "description": "Calculates sum and average of an array of ultrasonic thickness grid readings.",
+  "mathematical_expression": "Average = sum(readings) / count(readings)",
+  "formula": "sum_values / count_values",
+  "required_inputs": [
+    "sum_values",
+    "count_values"
+  ],
+  "optional_inputs": [],
+  "output": "average_thickness",
+  "input_units": {
+    "sum_values": "mm",
+    "count_values": "count"
+  },
+  "output_units": {
+    "average_thickness": "mm"
+  },
+  "output_unit": "mm",
+  "applicable_equipment_classes": [
+    "piping",
+    "pressure_vessel",
+    "storage_tank",
+    "pump"
+  ],
+  "applicable_component_classes": [
+    "grid_inspection_band"
+  ],
+  "applicability_conditions": [
+    "At least two numeric thickness readings"
+  ],
+  "applicability": [
+    "grid readings available"
+  ],
+  "non_applicability_conditions": [
+    "count_values <= 0"
+  ],
+  "not_applicable_when": [
+    "count_values <= 0"
+  ],
+  "assumptions": [
+    "Uniform grid distribution across component"
+  ],
+  "input_validation_rules": [
+    "sum_values > 0",
+    "count_values > 0"
+  ],
+  "calculation_method": "deterministic_average",
+  "source_reference": "ASTM E797 / API 574 Grid Scans \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

@@ -1,0 +1,82 @@
+{
+  "formula_id": "CR-005",
+  "formula_name": "API 570 Remaining Service Life",
+  "category": "corrosion",
+  "description": "Calculates remaining operational life in years before wall thickness reaches minimum retirement limit.",
+  "mathematical_expression": "RL = (current_thickness - minimum_allowable_thickness) / corrosion_rate",
+  "formula_expression": "RL = (current_thickness - minimum_allowable_thickness) / corrosion_rate",
+  "formula": "(current_thickness - minimum_allowable_thickness) / corrosion_rate",
+  "required_inputs": [
+    "current_thickness",
+    "minimum_allowable_thickness",
+    "corrosion_rate"
+  ],
+  "input_mapping": {
+    "current_thickness": "current_thickness",
+    "minimum_allowable_thickness": "minimum_allowable_thickness",
+    "corrosion_rate": "corrosion_rate"
+  },
+  "optional_inputs": [
+    "environmental_factor"
+  ],
+  "output": "remaining_life",
+  "input_units": {
+    "current_thickness": "mm",
+    "minimum_allowable_thickness": "mm",
+    "corrosion_rate": "mm/year"
+  },
+  "output_units": {
+    "remaining_life": "years"
+  },
+  "output_unit": "years",
+  "applicable_equipment_classes": [
+    "pump",
+    "piping",
+    "pressure_vessel",
+    "storage_tank",
+    "heat_exchanger",
+    "column",
+    "drum"
+  ],
+  "applicable_component_classes": [
+    "volute_casing",
+    "pipe_wall",
+    "vessel_shell",
+    "vessel_head"
+  ],
+  "applicability_conditions": [
+    "Current thickness > minimum allowable thickness",
+    "Corrosion rate > 0 established from verified comparable data",
+    "Operating service conditions projected to remain constant"
+  ],
+  "applicability": [
+    "t_curr > t_min",
+    "corrosion_rate > 0",
+    "minimum allowable established"
+  ],
+  "non_applicability_conditions": [
+    "Corrosion rate <= 0 (unless no-corrosion service explicitly justified)",
+    "Minimum allowable thickness is missing",
+    "Current thickness is below minimum allowable thickness (retirement condition reached)"
+  ],
+  "not_applicable_when": [
+    "corrosion_rate is missing or <=0",
+    "t_min is missing",
+    "t_curr <= t_min"
+  ],
+  "assumptions": [
+    "Corrosion rate remains linear over the remaining life forecast window"
+  ],
+  "input_validation_rules": [
+    "current_thickness > 0",
+    "minimum_allowable_thickness > 0",
+    "corrosion_rate > 0",
+    "current_thickness >= minimum_allowable_thickness"
+  ],
+  "calculation_method": "deterministic_division",
+  "source_reference": "API 570 Section 7.1.2 / API 510 \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": true,
+  "requires_human_review": true
+}

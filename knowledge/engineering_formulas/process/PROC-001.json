@@ -1,0 +1,57 @@
+{
+  "formula_id": "PROC-001",
+  "formula_name": "Liquid Residence Time in Vessel / Drum",
+  "category": "process",
+  "description": "Calculates mean hydraulic liquid residence time in vessel.",
+  "mathematical_expression": "Residence_Time_min = (Liquid_Volume_m3 / Volumetric_Flow_m3hr) * 60.0",
+  "formula": "(Liquid_Volume_m3 / Volumetric_Flow_m3hr) * 60.0",
+  "required_inputs": [
+    "Liquid_Volume_m3",
+    "Volumetric_Flow_m3hr"
+  ],
+  "optional_inputs": [],
+  "output": "residence_time_minutes",
+  "input_units": {
+    "Liquid_Volume_m3": "m3",
+    "Volumetric_Flow_m3hr": "m3/hr"
+  },
+  "output_units": {
+    "residence_time_minutes": "min"
+  },
+  "output_unit": "min",
+  "applicable_equipment_classes": [
+    "drum",
+    "separator",
+    "tank",
+    "reactor"
+  ],
+  "applicable_component_classes": [
+    "surge_drum",
+    "flash_vessel"
+  ],
+  "applicability_conditions": [
+    "Steady-state continuous flow"
+  ],
+  "applicability": [
+    "liquid holdup volume and flow rate available"
+  ],
+  "non_applicability_conditions": [
+    "Zero flow rate"
+  ],
+  "not_applicable_when": [
+    "Volumetric_Flow_m3hr <= 0"
+  ],
+  "assumptions": [
+    "Ideal plug-flow or well-mixed mean holdup"
+  ],
+  "input_validation_rules": [
+    "Liquid_Volume_m3 >= 0",
+    "Volumetric_Flow_m3hr > 0"
+  ],
+  "calculation_method": "deterministic_division",
+  "source_reference": "API 521 / Chemical Engineering Design \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

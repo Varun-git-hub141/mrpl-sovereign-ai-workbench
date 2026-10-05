@@ -1,0 +1,90 @@
+# =========================
+# Python
+# =========================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# =========================
+# Testing
+# =========================
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+# =========================
+# Environment / Secrets
+# =========================
+
+.env
+.env.*
+!.env.example
+
+*.pem
+*.key
+
+credentials.json
+secrets.json
+
+# =========================
+# IDE / Editor
+# =========================
+
+.vscode/
+.idea/
+
+# =========================
+# OS
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+# Development / Temporary
+# =========================
+
+scratch/
+artifacts/
+
+# =========================
+# Runtime / Generated Data
+# =========================
+
+backend/data/*
+!backend/data/README.md
+
+# =========================
+# Industrial Knowledge Base
+# =========================
+
+MRPL_KNOWLEDGE_BASE/*
+!MRPL_KNOWLEDGE_BASE/README.md
+
+# =========================
+# Generated Files
+# =========================
+
+*.log
+*.tmp
+*.bak
+# =========================
+# Generated reports / runtime output
+# =========================
+
+MRPL_Sovereign_AI_Workbench_Comprehensive_Project_Report.docx
+scratch_live_trace_results.json
+# =========================
+# Generated Reports / Runtime Output
+# =========================
+
+MRPL_Sovereign_AI_Workbench_Comprehensive_Project_Report.docx
+scratch_live_trace_results.json

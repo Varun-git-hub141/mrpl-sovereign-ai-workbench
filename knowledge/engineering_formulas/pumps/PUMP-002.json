@@ -1,0 +1,57 @@
+{
+  "formula_id": "PUMP-002",
+  "formula_name": "Pump Brake Shaft Power (BKP)",
+  "category": "pumps",
+  "description": "Calculates electrical motor shaft power required based on pump efficiency.",
+  "mathematical_expression": "P_shaft = hydraulic_power_kW / (efficiency_pct / 100.0)",
+  "formula": "hydraulic_power_kW / (efficiency_pct / 100.0)",
+  "required_inputs": [
+    "hydraulic_power_kW",
+    "efficiency_pct"
+  ],
+  "optional_inputs": [
+    "mechanical_loss_margin"
+  ],
+  "output": "shaft_power",
+  "input_units": {
+    "hydraulic_power_kW": "kW",
+    "efficiency_pct": "%"
+  },
+  "output_units": {
+    "shaft_power": "kW"
+  },
+  "output_unit": "kW",
+  "applicable_equipment_classes": [
+    "pump"
+  ],
+  "applicable_component_classes": [
+    "motor_coupling",
+    "pump_shaft"
+  ],
+  "applicability_conditions": [
+    "Efficiency between 10% and 95%"
+  ],
+  "applicability": [
+    "hydraulic power and pump efficiency known"
+  ],
+  "non_applicability_conditions": [
+    "efficiency <= 0 or > 100%"
+  ],
+  "not_applicable_when": [
+    "efficiency_pct <= 0 or efficiency_pct > 100"
+  ],
+  "assumptions": [
+    "Excludes gear loss unless factored into efficiency"
+  ],
+  "input_validation_rules": [
+    "hydraulic_power_kW > 0",
+    "efficiency_pct > 0",
+    "efficiency_pct <= 100"
+  ],
+  "calculation_method": "deterministic_division",
+  "source_reference": "API 610 / HI Standards \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

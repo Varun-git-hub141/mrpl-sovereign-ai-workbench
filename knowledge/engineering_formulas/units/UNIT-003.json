@@ -1,0 +1,47 @@
+{
+  "formula_id": "UNIT-003",
+  "formula_name": "Pressure Unit Conversion (Bar to PSI)",
+  "category": "units",
+  "description": "Converts pressure from bar to pounds per square inch (psi).",
+  "mathematical_expression": "P_psi = P_bar * 14.50377",
+  "formula": "P_bar * 14.50377",
+  "required_inputs": [
+    "P_bar"
+  ],
+  "optional_inputs": [],
+  "output": "P_psi",
+  "input_units": {
+    "P_bar": "bar"
+  },
+  "output_units": {
+    "P_psi": "psi"
+  },
+  "output_unit": "psi",
+  "applicable_equipment_classes": [
+    "piping",
+    "pressure_vessel",
+    "pump",
+    "valve"
+  ],
+  "applicable_component_classes": [
+    "all"
+  ],
+  "applicability_conditions": [
+    "Pressure in bar"
+  ],
+  "applicability": [
+    "pressure in bar"
+  ],
+  "non_applicability_conditions": [],
+  "not_applicable_when": [],
+  "assumptions": [
+    "1 bar = 14.50377 psi"
+  ],
+  "input_validation_rules": [],
+  "calculation_method": "deterministic_multiplication",
+  "source_reference": "SI / Imperial Unit Conversions \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

@@ -1,0 +1,60 @@
+{
+  "formula_id": "PV-002",
+  "formula_name": "Thin-Walled Cylinder Circumferential Hoop Stress",
+  "category": "vessels",
+  "description": "Calculates membrane hoop stress in cylindrical shell under internal pressure.",
+  "mathematical_expression": "sigma_hoop = (P * inside_diameter) / (2.0 * wall_thickness)",
+  "formula": "(P * inside_diameter) / (2.0 * wall_thickness)",
+  "required_inputs": [
+    "P",
+    "inside_diameter",
+    "wall_thickness"
+  ],
+  "optional_inputs": [],
+  "output": "hoop_stress",
+  "input_units": {
+    "P": "MPa",
+    "inside_diameter": "mm",
+    "wall_thickness": "mm"
+  },
+  "output_units": {
+    "hoop_stress": "MPa"
+  },
+  "output_unit": "MPa",
+  "applicable_equipment_classes": [
+    "pressure_vessel",
+    "piping",
+    "drum",
+    "storage_tank"
+  ],
+  "applicable_component_classes": [
+    "shell_wall",
+    "pipe_wall"
+  ],
+  "applicability_conditions": [
+    "Thin wall ratio: wall_thickness / inside_diameter < 0.1"
+  ],
+  "applicability": [
+    "internal pressure, ID, thickness available"
+  ],
+  "non_applicability_conditions": [
+    "Thick wall cylinders where radial stress gradient is significant"
+  ],
+  "not_applicable_when": [
+    "wall_thickness / inside_diameter >= 0.1"
+  ],
+  "assumptions": [
+    "Uniform tensile membrane stress across wall"
+  ],
+  "input_validation_rules": [
+    "P > 0",
+    "inside_diameter > 0",
+    "wall_thickness > 0"
+  ],
+  "calculation_method": "deterministic_stress",
+  "source_reference": "ASME Boiler & Pressure Vessel Code \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": true,
+  "requires_human_review": false
+}

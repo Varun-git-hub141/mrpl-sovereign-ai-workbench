@@ -1,0 +1,64 @@
+{
+  "formula_id": "CR-003",
+  "formula_name": "Cumulative Wall Thickness Loss",
+  "category": "corrosion",
+  "description": "Calculates total metal loss from nominal or baseline thickness to current measurement.",
+  "mathematical_expression": "Loss = baseline_thickness - current_thickness",
+  "formula": "baseline_thickness - current_thickness",
+  "required_inputs": [
+    "baseline_thickness",
+    "current_thickness"
+  ],
+  "optional_inputs": [
+    "fabrication_undertolerance"
+  ],
+  "output": "thickness_loss",
+  "input_units": {
+    "baseline_thickness": "mm",
+    "current_thickness": "mm"
+  },
+  "output_units": {
+    "thickness_loss": "mm"
+  },
+  "output_unit": "mm",
+  "applicable_equipment_classes": [
+    "pump",
+    "piping",
+    "pressure_vessel",
+    "storage_tank",
+    "heat_exchanger"
+  ],
+  "applicable_component_classes": [
+    "casing",
+    "pipe",
+    "shell",
+    "head"
+  ],
+  "applicability_conditions": [
+    "Baseline thickness established by design datasheet or fabrication drawing"
+  ],
+  "applicability": [
+    "baseline nominal known",
+    "current measurement available"
+  ],
+  "non_applicability_conditions": [
+    "Baseline nominal unknown or uncertain"
+  ],
+  "not_applicable_when": [
+    "baseline not established"
+  ],
+  "assumptions": [
+    "Nominal baseline represents pre-service metal boundary"
+  ],
+  "input_validation_rules": [
+    "baseline_thickness > 0",
+    "current_thickness > 0",
+    "current_thickness <= baseline_thickness"
+  ],
+  "calculation_method": "deterministic_subtraction",
+  "source_reference": "API 574 / API 570 \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

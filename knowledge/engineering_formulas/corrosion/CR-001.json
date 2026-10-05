@@ -1,0 +1,91 @@
+{
+  "formula_id": "CR-001",
+  "name": "Historical Corrosion Rate",
+  "formula_name": "Historical Corrosion Rate",
+  "category": "corrosion",
+  "description": "Calculates average long-term corrosion rate between baseline/previous measurement and current ultrasonic measurement.",
+  "mathematical_expression": "CR = (previous_thickness - current_thickness) / inspection_interval",
+  "formula_expression": "(previous_thickness - current_thickness) / inspection_interval",
+  "expression": "(previous_thickness - current_thickness) / inspection_interval",
+  "formula": "(previous_thickness - current_thickness) / inspection_interval",
+  "inputs": [
+    "previous_thickness",
+    "current_thickness",
+    "inspection_interval"
+  ],
+  "required_inputs": [
+    "previous_thickness",
+    "current_thickness",
+    "inspection_interval"
+  ],
+  "input_mapping": {
+    "previous_thickness": "previous_thickness",
+    "current_thickness": "current_thickness",
+    "inspection_interval": "inspection_interval"
+  },
+  "optional_inputs": [
+    "measurement_location_id",
+    "confidence_level"
+  ],
+  "output": "corrosion_rate",
+  "input_units": {
+    "previous_thickness": "mm",
+    "current_thickness": "mm",
+    "inspection_interval": "years"
+  },
+  "output_units": {
+    "corrosion_rate": "mm/year"
+  },
+  "output_unit": "mm/year",
+  "applicable_equipment_classes": [
+    "pump",
+    "piping",
+    "pressure_vessel",
+    "storage_tank",
+    "heat_exchanger",
+    "column"
+  ],
+  "applicable_component_classes": [
+    "casing",
+    "shell",
+    "head",
+    "pipe_wall",
+    "bottom_plate"
+  ],
+  "applicability_conditions": [
+    "Two comparable thickness measurements are available",
+    "Measurement dates or elapsed time interval is verified",
+    "Measurement locations (CML / TML) are comparable and documented"
+  ],
+  "applicability": [
+    "two comparable thickness measurements are available",
+    "measurement dates are known",
+    "measurement locations are comparable"
+  ],
+  "non_applicability_conditions": [
+    "Only one measurement exists",
+    "Measurement locations are not comparable or disparate inspection methods used",
+    "Localized severe pitting where uniform rate model is invalid without extreme value stats"
+  ],
+  "not_applicable_when": [
+    "previous measurement date is unknown",
+    "only one measurement exists",
+    "measurement locations are not comparable"
+  ],
+  "assumptions": [
+    "Uniform linear metal loss over the specified inspection interval",
+    "No intermediate weld repairs or clad overlay altering baseline metal"
+  ],
+  "input_validation_rules": [
+    "previous_thickness > 0",
+    "current_thickness > 0",
+    "elapsed_time > 0",
+    "current_thickness <= previous_thickness"
+  ],
+  "calculation_method": "deterministic_linear_arithmetic",
+  "source_reference": "API 570 Section 7.1.1 / API 510 \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": true,
+  "requires_human_review": false
+}

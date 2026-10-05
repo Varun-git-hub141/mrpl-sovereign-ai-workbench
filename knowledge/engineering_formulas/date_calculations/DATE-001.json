@@ -1,0 +1,50 @@
+{
+  "formula_id": "DATE-001",
+  "formula_name": "Decimal Elapsed Years Between Dates",
+  "category": "date_calculations",
+  "description": "Calculates exact elapsed years between two calendar dates (YYYY-MM-DD).",
+  "mathematical_expression": "Elapsed_Years = (Date_Current - Date_Previous) in days / 365.25",
+  "formula": "elapsed_days / 365.25",
+  "required_inputs": [
+    "elapsed_days"
+  ],
+  "optional_inputs": [],
+  "output": "elapsed_years",
+  "input_units": {
+    "elapsed_days": "days"
+  },
+  "output_units": {
+    "elapsed_years": "years"
+  },
+  "output_unit": "years",
+  "applicable_equipment_classes": [
+    "all"
+  ],
+  "applicable_component_classes": [
+    "all"
+  ],
+  "applicability_conditions": [
+    "Elapsed days between verified calendar survey dates"
+  ],
+  "applicability": [
+    "positive elapsed days"
+  ],
+  "non_applicability_conditions": [
+    "elapsed_days <= 0"
+  ],
+  "not_applicable_when": [
+    "elapsed_days <= 0"
+  ],
+  "assumptions": [
+    "Average calendar year = 365.25 days accounting for leap years"
+  ],
+  "input_validation_rules": [
+    "elapsed_days > 0"
+  ],
+  "calculation_method": "deterministic_division",
+  "source_reference": "Calendar Calculation Standards \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

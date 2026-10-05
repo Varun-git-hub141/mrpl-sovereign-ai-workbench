@@ -1,0 +1,62 @@
+{
+  "formula_id": "THERM-001",
+  "formula_name": "Ideal Gas Density",
+  "category": "thermodynamics",
+  "description": "Calculates density of ideal gas from absolute pressure, molecular weight, and absolute temperature.",
+  "mathematical_expression": "rho_gas = (P_bar_a * 100000.0 * MW) / (8314.462 * T_Kelvin)",
+  "formula": "(P_bar_a * 100000.0 * MW) / (8314.462 * T_Kelvin)",
+  "required_inputs": [
+    "P_bar_a",
+    "MW",
+    "T_Kelvin"
+  ],
+  "optional_inputs": [
+    "compressibility_factor_Z"
+  ],
+  "output": "gas_density",
+  "input_units": {
+    "P_bar_a": "bara",
+    "MW": "kg/kmol",
+    "T_Kelvin": "K"
+  },
+  "output_units": {
+    "gas_density": "kg/m3"
+  },
+  "output_unit": "kg/m3",
+  "applicable_equipment_classes": [
+    "compressor",
+    "piping",
+    "pressure_vessel",
+    "relief_valve"
+  ],
+  "applicable_component_classes": [
+    "flare_piping",
+    "compressor_casing"
+  ],
+  "applicability_conditions": [
+    "Low to moderate pressure where compressibility Z approx 1.0"
+  ],
+  "applicability": [
+    "absolute pressure, gas MW, temperature known"
+  ],
+  "non_applicability_conditions": [
+    "High pressure near critical point (requires real gas EOS like Peng-Robinson)"
+  ],
+  "not_applicable_when": [
+    "near critical point"
+  ],
+  "assumptions": [
+    "Universal gas constant R = 8314.462 J/(kmol*K)"
+  ],
+  "input_validation_rules": [
+    "P_bar_a > 0",
+    "MW > 0",
+    "T_Kelvin > 0"
+  ],
+  "calculation_method": "deterministic_gas_density",
+  "source_reference": "Classical Thermodynamics Principles \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

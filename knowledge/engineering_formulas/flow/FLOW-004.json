@@ -1,0 +1,62 @@
+{
+  "formula_id": "FLOW-004",
+  "formula_name": "Reynolds Number for Pipe Flow",
+  "category": "flow",
+  "description": "Calculates dimensionless Reynolds number to establish laminar vs turbulent flow regime.",
+  "mathematical_expression": "Re = (density * velocity * (diameter_mm / 1000.0)) / (viscosity_cp / 1000.0)",
+  "formula": "(density * velocity * (diameter_mm / 1000.0)) / (viscosity_cp / 1000.0)",
+  "required_inputs": [
+    "density",
+    "velocity",
+    "diameter_mm",
+    "viscosity_cp"
+  ],
+  "optional_inputs": [],
+  "output": "reynolds_number",
+  "input_units": {
+    "density": "kg/m3",
+    "velocity": "m/s",
+    "diameter_mm": "mm",
+    "viscosity_cp": "cP"
+  },
+  "output_units": {
+    "reynolds_number": "dimensionless"
+  },
+  "output_unit": "dimensionless",
+  "applicable_equipment_classes": [
+    "piping",
+    "pipeline",
+    "heat_exchanger"
+  ],
+  "applicable_component_classes": [
+    "pipe",
+    "tube_bundle"
+  ],
+  "applicability_conditions": [
+    "Newtonian fluid, full pipe flow"
+  ],
+  "applicability": [
+    "density, velocity, diameter, viscosity available"
+  ],
+  "non_applicability_conditions": [
+    "Non-Newtonian slurry without apparent viscosity curve"
+  ],
+  "not_applicable_when": [
+    "viscosity <= 0"
+  ],
+  "assumptions": [
+    "Newtonian fluid"
+  ],
+  "input_validation_rules": [
+    "density > 0",
+    "velocity >= 0",
+    "diameter_mm > 0",
+    "viscosity_cp > 0"
+  ],
+  "calculation_method": "deterministic_reynolds",
+  "source_reference": "Crane Technical Paper 410 \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

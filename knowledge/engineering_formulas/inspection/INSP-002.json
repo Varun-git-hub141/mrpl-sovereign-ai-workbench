@@ -1,0 +1,58 @@
+{
+  "formula_id": "INSP-002",
+  "formula_name": "Thickness Margin Percentage Over Retirement",
+  "category": "inspection",
+  "description": "Calculates percentage excess wall thickness remaining over statutory retirement limit.",
+  "mathematical_expression": "Margin_pct = ((current_thickness - minimum_allowable_thickness) / minimum_allowable_thickness) * 100",
+  "formula": "((current_thickness - minimum_allowable_thickness) / minimum_allowable_thickness) * 100",
+  "required_inputs": [
+    "current_thickness",
+    "minimum_allowable_thickness"
+  ],
+  "optional_inputs": [],
+  "output": "thickness_margin_percentage",
+  "input_units": {
+    "current_thickness": "mm",
+    "minimum_allowable_thickness": "mm"
+  },
+  "output_units": {
+    "thickness_margin_percentage": "%"
+  },
+  "output_unit": "%",
+  "applicable_equipment_classes": [
+    "pump",
+    "piping",
+    "pressure_vessel",
+    "storage_tank"
+  ],
+  "applicable_component_classes": [
+    "casing",
+    "pipe_wall",
+    "shell"
+  ],
+  "applicability_conditions": [
+    "t_curr and t_min known"
+  ],
+  "applicability": [
+    "both thickness values verified"
+  ],
+  "non_applicability_conditions": [
+    "t_min <= 0 or missing"
+  ],
+  "not_applicable_when": [
+    "t_min missing"
+  ],
+  "assumptions": [
+    "Dimensionless ratio against code minimum"
+  ],
+  "input_validation_rules": [
+    "current_thickness > 0",
+    "minimum_allowable_thickness > 0"
+  ],
+  "calculation_method": "deterministic_ratio",
+  "source_reference": "API 570 / API 574 \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

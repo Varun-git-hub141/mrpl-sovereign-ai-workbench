@@ -1,0 +1,64 @@
+{
+  "formula_id": "CR-004",
+  "formula_name": "Remaining Corrosion Allowance",
+  "category": "corrosion",
+  "description": "Calculates remaining sacrificial metal allowance above minimum retirement limit.",
+  "mathematical_expression": "CA_rem = current_thickness - minimum_allowable_thickness",
+  "formula": "current_thickness - minimum_allowable_thickness",
+  "required_inputs": [
+    "current_thickness",
+    "minimum_allowable_thickness"
+  ],
+  "optional_inputs": [
+    "structural_minimum_override"
+  ],
+  "output": "remaining_corrosion_allowance",
+  "input_units": {
+    "current_thickness": "mm",
+    "minimum_allowable_thickness": "mm"
+  },
+  "output_units": {
+    "remaining_corrosion_allowance": "mm"
+  },
+  "output_unit": "mm",
+  "applicable_equipment_classes": [
+    "pump",
+    "piping",
+    "pressure_vessel",
+    "storage_tank",
+    "heat_exchanger",
+    "column"
+  ],
+  "applicable_component_classes": [
+    "casing",
+    "shell",
+    "pipe_wall",
+    "bottom_plate"
+  ],
+  "applicability_conditions": [
+    "Minimum allowable thickness (t_min) established per code calculation or engineering spec"
+  ],
+  "applicability": [
+    "t_min known",
+    "current thickness verified"
+  ],
+  "non_applicability_conditions": [
+    "Minimum retirement thickness not established"
+  ],
+  "not_applicable_when": [
+    "t_min is missing or unverified"
+  ],
+  "assumptions": [
+    "t_min accounts for internal design pressure, structural weight, and seismic/wind loads"
+  ],
+  "input_validation_rules": [
+    "current_thickness > 0",
+    "minimum_allowable_thickness > 0"
+  ],
+  "calculation_method": "deterministic_subtraction",
+  "source_reference": "ASME B31.3 / API 570 \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": true,
+  "requires_human_review": false
+}

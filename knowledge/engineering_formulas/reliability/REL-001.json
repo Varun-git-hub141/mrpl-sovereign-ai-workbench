@@ -1,0 +1,56 @@
+{
+  "formula_id": "REL-001",
+  "formula_name": "Mean Time Between Failures (MTBF)",
+  "category": "reliability",
+  "description": "Calculates mean operational operating hours between unbudgeted failure trips.",
+  "mathematical_expression": "MTBF = total_operating_hours / number_of_failures",
+  "formula": "total_operating_hours / number_of_failures",
+  "required_inputs": [
+    "total_operating_hours",
+    "number_of_failures"
+  ],
+  "optional_inputs": [],
+  "output": "mtbf_hours",
+  "input_units": {
+    "total_operating_hours": "hours",
+    "number_of_failures": "count"
+  },
+  "output_units": {
+    "mtbf_hours": "hours"
+  },
+  "output_unit": "hours",
+  "applicable_equipment_classes": [
+    "pump",
+    "compressor",
+    "motor",
+    "control_valve"
+  ],
+  "applicable_component_classes": [
+    "machinery_train"
+  ],
+  "applicability_conditions": [
+    "At least one recorded failure event during observation window"
+  ],
+  "applicability": [
+    "failure event log and run hours available"
+  ],
+  "non_applicability_conditions": [
+    "number_of_failures <= 0"
+  ],
+  "not_applicable_when": [
+    "number_of_failures == 0"
+  ],
+  "assumptions": [
+    "Constant failure rate exponential distribution"
+  ],
+  "input_validation_rules": [
+    "total_operating_hours > 0",
+    "number_of_failures > 0"
+  ],
+  "calculation_method": "deterministic_division",
+  "source_reference": "ISO 14224 Reliability and Maintenance Data \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

@@ -1,0 +1,57 @@
+{
+  "formula_id": "MECH-002",
+  "formula_name": "Structural Safety Factor Against Yield",
+  "category": "mechanical",
+  "description": "Calculates structural factor of safety comparing material yield strength to calculated working stress.",
+  "mathematical_expression": "Safety_Factor = yield_strength_MPa / actual_stress_MPa",
+  "formula": "yield_strength_MPa / actual_stress_MPa",
+  "required_inputs": [
+    "yield_strength_MPa",
+    "actual_stress_MPa"
+  ],
+  "optional_inputs": [],
+  "output": "safety_factor",
+  "input_units": {
+    "yield_strength_MPa": "MPa",
+    "actual_stress_MPa": "MPa"
+  },
+  "output_units": {
+    "safety_factor": "ratio"
+  },
+  "output_unit": "ratio",
+  "applicable_equipment_classes": [
+    "piping",
+    "pressure_vessel",
+    "storage_tank",
+    "pump_skid"
+  ],
+  "applicable_component_classes": [
+    "structural_base",
+    "flange_bolting"
+  ],
+  "applicability_conditions": [
+    "Linear elastic material behavior"
+  ],
+  "applicability": [
+    "yield strength and working stress established"
+  ],
+  "non_applicability_conditions": [
+    "actual_stress_MPa <= 0"
+  ],
+  "not_applicable_when": [
+    "actual_stress_MPa <= 0"
+  ],
+  "assumptions": [
+    "Static loading without high-cycle fatigue"
+  ],
+  "input_validation_rules": [
+    "yield_strength_MPa > 0",
+    "actual_stress_MPa > 0"
+  ],
+  "calculation_method": "deterministic_division",
+  "source_reference": "Mechanical Engineering Design / ASME BPV Code \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": true,
+  "requires_human_review": false
+}

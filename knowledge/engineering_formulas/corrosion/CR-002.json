@@ -1,0 +1,69 @@
+{
+  "formula_id": "CR-002",
+  "formula_name": "Short-Term Corrosion Rate",
+  "category": "corrosion",
+  "description": "Calculates short-term rate between the two most recent consecutive ultrasonic thickness surveys.",
+  "mathematical_expression": "CR_ST = (previous_recent_thickness - current_thickness) / recent_elapsed_time",
+  "formula": "(previous_recent_thickness - current_thickness) / recent_elapsed_time",
+  "required_inputs": [
+    "previous_recent_thickness",
+    "current_thickness",
+    "recent_elapsed_time"
+  ],
+  "optional_inputs": [
+    "temperature_compensated"
+  ],
+  "output": "short_term_corrosion_rate",
+  "input_units": {
+    "previous_recent_thickness": "mm",
+    "current_thickness": "mm",
+    "recent_elapsed_time": "years"
+  },
+  "output_units": {
+    "short_term_corrosion_rate": "mm/year"
+  },
+  "output_unit": "mm/year",
+  "applicable_equipment_classes": [
+    "piping",
+    "pressure_vessel",
+    "storage_tank",
+    "pump",
+    "column"
+  ],
+  "applicable_component_classes": [
+    "pipe_spool",
+    "nozzle",
+    "volute_casing",
+    "tray_support_ring"
+  ],
+  "applicability_conditions": [
+    "Recent inspection interval between 0.5 and 5.0 years",
+    "Consistent NDT calibration grid"
+  ],
+  "applicability": [
+    "recent consecutive inspections available",
+    "same CML grid"
+  ],
+  "non_applicability_conditions": [
+    "Elapsed time < 0.25 years with high measurement error",
+    "Different NDT probe frequency without normalization"
+  ],
+  "not_applicable_when": [
+    "interval too short",
+    "disparate probe types"
+  ],
+  "assumptions": [
+    "Short-term process conditions represent recent operating regime"
+  ],
+  "input_validation_rules": [
+    "previous_recent_thickness > 0",
+    "current_thickness > 0",
+    "recent_elapsed_time > 0"
+  ],
+  "calculation_method": "deterministic_linear_arithmetic",
+  "source_reference": "API 570 Section 7.1.1 \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": true,
+  "requires_human_review": false
+}

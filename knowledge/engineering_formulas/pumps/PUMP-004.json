@@ -1,0 +1,61 @@
+{
+  "formula_id": "PUMP-004",
+  "formula_name": "Net Positive Suction Head Available (NPSHa)",
+  "category": "pumps",
+  "description": "Calculates available absolute suction margin above liquid vapor pressure to prevent cavitation.",
+  "mathematical_expression": "NPSHa = H_suct_abs + H_static - H_friction - H_vapor_pressure",
+  "formula": "H_suct_abs + H_static - H_friction - H_vapor_pressure",
+  "required_inputs": [
+    "H_suct_abs",
+    "H_static",
+    "H_friction",
+    "H_vapor_pressure"
+  ],
+  "optional_inputs": [
+    "margin_safety_factor"
+  ],
+  "output": "npsha",
+  "input_units": {
+    "H_suct_abs": "m",
+    "H_static": "m",
+    "H_friction": "m",
+    "H_vapor_pressure": "m"
+  },
+  "output_units": {
+    "npsha": "m"
+  },
+  "output_unit": "m",
+  "applicable_equipment_classes": [
+    "pump"
+  ],
+  "applicable_component_classes": [
+    "suction_nozzle",
+    "impeller_eye"
+  ],
+  "applicability_conditions": [
+    "Liquid service, vapor pressure at operating temperature verified"
+  ],
+  "applicability": [
+    "suction line geometry and fluid vapor pressure known"
+  ],
+  "non_applicability_conditions": [
+    "Missing fluid vapor pressure at pumping temperature"
+  ],
+  "not_applicable_when": [
+    "vapor pressure unknown"
+  ],
+  "assumptions": [
+    "API 610 suction head datum at pump centerline"
+  ],
+  "input_validation_rules": [
+    "H_suct_abs > 0",
+    "H_friction >= 0",
+    "H_vapor_pressure >= 0"
+  ],
+  "calculation_method": "deterministic_npsh",
+  "source_reference": "API 610 Section 6.1.8 / Hydraulic Institute 9.6.1 \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": true,
+  "requires_human_review": true
+}

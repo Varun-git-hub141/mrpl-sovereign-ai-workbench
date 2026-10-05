@@ -1,0 +1,52 @@
+{
+  "formula_id": "FIN-001",
+  "formula_name": "Percentage Deviation / Variance",
+  "category": "financial",
+  "description": "Calculates percentage change between baseline reference and observed value.",
+  "mathematical_expression": "Pct_Change = ((observed_value - baseline_value) / baseline_value) * 100.0",
+  "formula": "((observed_value - baseline_value) / baseline_value) * 100.0",
+  "required_inputs": [
+    "baseline_value",
+    "observed_value"
+  ],
+  "optional_inputs": [],
+  "output": "percentage_change",
+  "input_units": {
+    "baseline_value": "unit",
+    "observed_value": "unit"
+  },
+  "output_units": {
+    "percentage_change": "%"
+  },
+  "output_unit": "%",
+  "applicable_equipment_classes": [
+    "all"
+  ],
+  "applicable_component_classes": [
+    "all"
+  ],
+  "applicability_conditions": [
+    "baseline_value != 0"
+  ],
+  "applicability": [
+    "baseline and observed value known"
+  ],
+  "non_applicability_conditions": [
+    "baseline_value == 0 (division by zero)"
+  ],
+  "not_applicable_when": [
+    "baseline_value == 0"
+  ],
+  "assumptions": [
+    "Standard arithmetic variance"
+  ],
+  "input_validation_rules": [
+    "baseline_value != 0"
+  ],
+  "calculation_method": "deterministic_percentage",
+  "source_reference": "Engineering Statistical Methods \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

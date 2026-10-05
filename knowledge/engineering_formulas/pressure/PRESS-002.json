@@ -1,0 +1,61 @@
+{
+  "formula_id": "PRESS-002",
+  "formula_name": "Hydrostatic Liquid Column Pressure",
+  "category": "pressure",
+  "description": "Calculates static hydrostatic pressure exerted by a vertical column of liquid.",
+  "mathematical_expression": "P_hydro = (density * g * height) / 100000",
+  "formula": "(density * 9.80665 * height) / 100000",
+  "required_inputs": [
+    "density",
+    "height"
+  ],
+  "optional_inputs": [
+    "gravitational_acceleration"
+  ],
+  "output": "hydrostatic_pressure",
+  "input_units": {
+    "density": "kg/m3",
+    "height": "m"
+  },
+  "output_units": {
+    "hydrostatic_pressure": "bar"
+  },
+  "output_unit": "bar",
+  "applicable_equipment_classes": [
+    "storage_tank",
+    "column",
+    "drum",
+    "piping"
+  ],
+  "applicable_component_classes": [
+    "tank_bottom",
+    "sump",
+    "standpipe"
+  ],
+  "applicability_conditions": [
+    "Incompressible liquid column",
+    "Homogeneous liquid density"
+  ],
+  "applicability": [
+    "liquid height and density known"
+  ],
+  "non_applicability_conditions": [
+    "Gas columns or multiphase froth without mean density"
+  ],
+  "not_applicable_when": [
+    "compressible vapor phase"
+  ],
+  "assumptions": [
+    "g = 9.80665 m/s2"
+  ],
+  "input_validation_rules": [
+    "density > 0",
+    "height >= 0"
+  ],
+  "calculation_method": "deterministic_multiplication",
+  "source_reference": "Fluid Mechanics Principles \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

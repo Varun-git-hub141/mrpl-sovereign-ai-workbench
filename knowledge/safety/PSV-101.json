@@ -1,0 +1,10 @@
+{
+  "tag": "PSV-101",
+  "type": "safety_relief_valve",
+  "description": "Thermal / Blocked Discharge Pressure Safety Valve (3\" x 4\" Orifice J)",
+  "set_pressure_barg": 9.0,
+  "relieving_destination": "Refinery Low-Pressure Flare Header (FL-101)",
+  "protected_equipment": "Pump P-101 Casing and 10\" discharge manifold from shutoff overpressure",
+  "source": "Drawing CDU-P-101 Rev 2 / API 520 Sizing Sheet",
+  "version": "1.0.0"
+}

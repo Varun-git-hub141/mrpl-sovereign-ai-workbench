@@ -1,0 +1,57 @@
+{
+  "formula_id": "MECH-001",
+  "formula_name": "ISO 10816 Rotating Machinery Vibration Severity Trip",
+  "category": "mechanical",
+  "description": "Evaluates overall vibration velocity RMS against ISO 10816-3 Zone C/D alarm and trip limits.",
+  "mathematical_expression": "Trip_Exceeded = 1 if velocity_rms_mms > 7.1 else 0",
+  "formula": "1 if velocity_rms_mms > 7.1 else 0",
+  "required_inputs": [
+    "velocity_rms_mms"
+  ],
+  "optional_inputs": [
+    "machine_group",
+    "support_rigidity"
+  ],
+  "output": "iso_trip_flag",
+  "input_units": {
+    "velocity_rms_mms": "mm/s"
+  },
+  "output_units": {
+    "iso_trip_flag": "flag"
+  },
+  "output_unit": "flag",
+  "applicable_equipment_classes": [
+    "pump",
+    "compressor",
+    "motor",
+    "turbine"
+  ],
+  "applicable_component_classes": [
+    "bearing_housing",
+    "shaft"
+  ],
+  "applicability_conditions": [
+    "Broadband RMS vibration velocity measured between 10 Hz and 1000 Hz"
+  ],
+  "applicability": [
+    "overall RMS velocity measured per ISO 10816"
+  ],
+  "non_applicability_conditions": [
+    "High frequency acceleration enveloping for rolling element micro-spalls"
+  ],
+  "not_applicable_when": [
+    "peak-to-peak displacement only without frequency"
+  ],
+  "assumptions": [
+    "ISO 10816-3 Class II/III industrial rotating machinery on rigid foundation"
+  ],
+  "input_validation_rules": [
+    "velocity_rms_mms >= 0"
+  ],
+  "calculation_method": "deterministic_threshold",
+  "source_reference": "ISO 10816-3:2009 Mechanical Vibration Standard \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": true,
+  "requires_human_review": true
+}

@@ -1,0 +1,29 @@
+{
+  "tag": "P-101",
+  "type": "centrifugal_pump",
+  "description": "Crude Feed Transfer Pump (API 610 Type OH2 Single-Stage)",
+  "unit": "CDU-101",
+  "service": "Sweet/Sour Crude Oil Feed",
+  "function": "Transfers crude from Tank TK-201 at 280 m3/hr to CDU Pre-Heat Train at 7.2 barg discharge",
+  "metallurgy": "ASTM A216 Gr WCB Casing, 12% Cr Impeller",
+  "nominal_casing_thickness_mm": 5.0,
+  "minimum_allowable_thickness_mm": 3.2,
+  "design_corrosion_allowance_mm": 1.8,
+  "vibration_alarm_mm_s": 4.5,
+  "vibration_trip_mm_s": 7.1,
+  "isolation_valves": {
+    "suction": "XV-203",
+    "discharge": "XV-204",
+    "drains": [
+      "DV-101",
+      "DV-102"
+    ]
+  },
+  "safety_devices": [
+    "PSV-101 (Set 9.0 barg)",
+    "CV-101 (Check Valve)",
+    "Y-101 (Strainer)"
+  ],
+  "source": "Drawing CDU-P-101 Rev 2 / Datasheet \u2014 Prototype reference - requires engineering validation.",
+  "version": "1.0.0"
+}

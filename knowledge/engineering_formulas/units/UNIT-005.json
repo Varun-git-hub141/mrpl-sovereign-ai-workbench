@@ -1,0 +1,48 @@
+{
+  "formula_id": "UNIT-005",
+  "formula_name": "Flow Unit Conversion (m3/hr to L/min)",
+  "category": "units",
+  "description": "Converts volumetric flow rate from cubic meters per hour to liters per minute.",
+  "mathematical_expression": "Q_Lmin = (Q_m3hr * 1000.0) / 60.0",
+  "formula": "(Q_m3hr * 1000.0) / 60.0",
+  "required_inputs": [
+    "Q_m3hr"
+  ],
+  "optional_inputs": [],
+  "output": "Q_Lmin",
+  "input_units": {
+    "Q_m3hr": "m3/hr"
+  },
+  "output_units": {
+    "Q_Lmin": "L/min"
+  },
+  "output_unit": "L/min",
+  "applicable_equipment_classes": [
+    "pump",
+    "piping",
+    "control_valve"
+  ],
+  "applicable_component_classes": [
+    "all"
+  ],
+  "applicability_conditions": [
+    "Volumetric flow rate in m3/hr"
+  ],
+  "applicability": [
+    "flow in m3/hr"
+  ],
+  "non_applicability_conditions": [],
+  "not_applicable_when": [],
+  "assumptions": [
+    "1 m3 = 1000 L, 1 hr = 60 min"
+  ],
+  "input_validation_rules": [
+    "Q_m3hr >= 0"
+  ],
+  "calculation_method": "deterministic_multiplication",
+  "source_reference": "Metric Fluid Unit Standards \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

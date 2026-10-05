@@ -1,0 +1,30 @@
+================================================================================
+MRPL REFINERY MAINTENANCE & RELIABILITY DEPARTMENT
+EQUIPMENT INTEGRITY & HEALTH ASSESSMENT REPORT
+================================================================================
+Tag Number:         P-101A (Primary Crude Feed Booster Pump)
+Service:            Atmospheric Distillation Unit (ADU-1) Crude Column Feed
+Design Pressure:    55.0 bar (g)
+Design Temperature: 180 °C
+Current Date:       2026-08-25
+Survey Type:        Comprehensive Non-Destructive Testing & Dynamic Vibration Analysis
+
+1. VIBRATION ANALYSIS (ISO 10816-3 Evaluation):
+   - Drive End (DE) Bearing Radial Vibration:     6.8 mm/s RMS (Zone C - Unsatisfactory)
+   - Non-Drive End (NDE) Bearing Axial Vibration: 7.4 mm/s RMS (Zone D - Unacceptable/Trip threshold: 7.1 mm/s)
+   - FFT Spectrum: Dominant 1X running frequency with high 2X and 3X harmonic sidebands indicating severe shaft misalignment and mechanical looseness.
+
+2. ULTRASONIC WALL THICKNESS INSPECTION:
+   - Suction Casing Min Measured:   8.60 mm (Design Nominal: 12.70 mm, Min Required Retirement: 7.50 mm)
+   - Calculated Corrosion Rate:     0.72 mm/year (Accelerated naphthenic acid corrosion)
+   - Estimated Remaining Life (RL): 1.52 years
+
+3. MECHANICAL SEAL & AUXILIARY SYSTEMS:
+   - Plan 53B Barrier Fluid System: Minor seal face weeping observed (approx. 15 drops/min).
+   - Impeller Eye Ring Clearance:   0.85 mm (Allowable API 610 Max: 0.50 mm - Excess Wear).
+
+4. ENGINEERING RECOMMENDATION:
+   - IMMEDIATE: Switch load to standby pump P-101B.
+   - P-101A is NOT RECOMMENDED for unmonitored continued continuous operation.
+   - Require immediate seal replacement, bearing replacement, and laser shaft alignment during upcoming planned unit turnaround (TA-2026).
+================================================================================

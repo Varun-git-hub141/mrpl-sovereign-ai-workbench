@@ -1,0 +1,57 @@
+{
+  "formula_id": "FLOW-002",
+  "formula_name": "Mass Flow Rate from Volumetric Flow",
+  "category": "flow",
+  "description": "Calculates mass flow rate in metric tons per hour from volumetric flow and fluid density.",
+  "mathematical_expression": "Mass_Flow = (volumetric_flow_m3hr * density_kg_m3) / 1000.0",
+  "formula": "(volumetric_flow_m3hr * density_kg_m3) / 1000.0",
+  "required_inputs": [
+    "volumetric_flow_m3hr",
+    "density_kg_m3"
+  ],
+  "optional_inputs": [],
+  "output": "mass_flow_ton_hr",
+  "input_units": {
+    "volumetric_flow_m3hr": "m3/hr",
+    "density_kg_m3": "kg/m3"
+  },
+  "output_units": {
+    "mass_flow_ton_hr": "ton/hr"
+  },
+  "output_unit": "ton/hr",
+  "applicable_equipment_classes": [
+    "piping",
+    "pump",
+    "column",
+    "furnace"
+  ],
+  "applicable_component_classes": [
+    "feed_line",
+    "product_draw"
+  ],
+  "applicability_conditions": [
+    "Density at operating temperature known"
+  ],
+  "applicability": [
+    "flow and density available"
+  ],
+  "non_applicability_conditions": [
+    "density <= 0"
+  ],
+  "not_applicable_when": [
+    "density <= 0"
+  ],
+  "assumptions": [
+    "Homogeneous fluid"
+  ],
+  "input_validation_rules": [
+    "volumetric_flow_m3hr >= 0",
+    "density_kg_m3 > 0"
+  ],
+  "calculation_method": "deterministic_multiplication",
+  "source_reference": "Standard Process Engineering Mass Balance \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

@@ -1,0 +1,47 @@
+{
+  "formula_id": "UNIT-001",
+  "formula_name": "Length Unit Conversion (Inches to Millimeters)",
+  "category": "units",
+  "description": "Converts dimensions from imperial inches to metric millimeters.",
+  "mathematical_expression": "Length_mm = Length_inch * 25.4",
+  "formula": "Length_inch * 25.4",
+  "required_inputs": [
+    "Length_inch"
+  ],
+  "optional_inputs": [],
+  "output": "length_mm",
+  "input_units": {
+    "Length_inch": "in"
+  },
+  "output_units": {
+    "length_mm": "mm"
+  },
+  "output_unit": "mm",
+  "applicable_equipment_classes": [
+    "piping",
+    "pump",
+    "valve",
+    "vessel"
+  ],
+  "applicable_component_classes": [
+    "all"
+  ],
+  "applicability_conditions": [
+    "Imperial inch input"
+  ],
+  "applicability": [
+    "dimension in inches"
+  ],
+  "non_applicability_conditions": [],
+  "not_applicable_when": [],
+  "assumptions": [
+    "Exact conversion 1 in = 25.4 mm"
+  ],
+  "input_validation_rules": [],
+  "calculation_method": "deterministic_multiplication",
+  "source_reference": "NIST Standard Unit Conversions \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

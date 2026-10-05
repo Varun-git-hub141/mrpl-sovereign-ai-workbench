@@ -1,0 +1,59 @@
+{
+  "formula_id": "PRESS-001",
+  "formula_name": "Gauge to Absolute Pressure Conversion",
+  "category": "pressure",
+  "description": "Converts gauge pressure (barg) to absolute pressure (bara) using local atmospheric pressure.",
+  "mathematical_expression": "P_abs = P_gauge + P_atm",
+  "formula": "P_gauge + P_atm",
+  "required_inputs": [
+    "P_gauge",
+    "P_atm"
+  ],
+  "optional_inputs": [],
+  "output": "P_abs",
+  "input_units": {
+    "P_gauge": "barg",
+    "P_atm": "bar"
+  },
+  "output_units": {
+    "P_abs": "bara"
+  },
+  "output_unit": "bara",
+  "applicable_equipment_classes": [
+    "pump",
+    "compressor",
+    "piping",
+    "pressure_vessel",
+    "relief_valve"
+  ],
+  "applicable_component_classes": [
+    "suction_nozzle",
+    "discharge_nozzle",
+    "relief_inlet"
+  ],
+  "applicability_conditions": [
+    "Atmospheric pressure known (default sea-level 1.01325 bar)"
+  ],
+  "applicability": [
+    "pressure measurements in gauge"
+  ],
+  "non_applicability_conditions": [
+    "Negative absolute pressure result (physically impossible)"
+  ],
+  "not_applicable_when": [
+    "P_gauge + P_atm < 0"
+  ],
+  "assumptions": [
+    "Standard barometric baseline applied"
+  ],
+  "input_validation_rules": [
+    "P_atm > 0",
+    "P_gauge + P_atm >= 0"
+  ],
+  "calculation_method": "deterministic_addition",
+  "source_reference": "General Thermodynamics & Process Engineering \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

@@ -1,0 +1,60 @@
+{
+  "formula_id": "INST-001",
+  "formula_name": "4-20 mA Analog Transmitter Linear Scaling",
+  "category": "instrumentation",
+  "description": "Converts 4-20 mA DCS current loop signal to calibrated engineering process measurement.",
+  "mathematical_expression": "Process_Val = Range_Min + ((Current_mA - 4.0) / 16.0) * (Range_Max - Range_Min)",
+  "formula": "Range_Min + ((Current_mA - 4.0) / 16.0) * (Range_Max - Range_Min)",
+  "required_inputs": [
+    "Current_mA",
+    "Range_Min",
+    "Range_Max"
+  ],
+  "optional_inputs": [],
+  "output": "engineering_value",
+  "input_units": {
+    "Current_mA": "mA",
+    "Range_Min": "eng_unit",
+    "Range_Max": "eng_unit"
+  },
+  "output_units": {
+    "engineering_value": "eng_unit"
+  },
+  "output_unit": "eng_unit",
+  "applicable_equipment_classes": [
+    "pressure_transmitter",
+    "temperature_transmitter",
+    "flow_transmitter",
+    "level_transmitter"
+  ],
+  "applicable_component_classes": [
+    "analog_input_card"
+  ],
+  "applicability_conditions": [
+    "Linear calibrated 4-20mA current loop (ISA-50.1)"
+  ],
+  "applicability": [
+    "4-20mA signal and calibrated range known"
+  ],
+  "non_applicability_conditions": [
+    "Square-root extraction for differential flow without square-root scaling formula",
+    "Current < 3.8 mA (fault)"
+  ],
+  "not_applicable_when": [
+    "loop fault condition Current < 3.6 mA"
+  ],
+  "assumptions": [
+    "Linear span relationship 4 mA = Range_Min, 20 mA = Range_Max"
+  ],
+  "input_validation_rules": [
+    "Current_mA >= 3.6",
+    "Current_mA <= 21.0",
+    "Range_Max > Range_Min"
+  ],
+  "calculation_method": "deterministic_linear_scaling",
+  "source_reference": "ISA-50.1 Analog Signal Standard \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

@@ -1,0 +1,181 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R 11 0 R] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 13 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 657 >>
+stream
+BT
+/F1 16 Tf
+50 750 Td
+(MRPL REFINERY - EQUIPMENT ULTRASONIC THICKNESS INSPECTION REPORT) Tj
+/F1 12 Tf
+0 -30 Td
+(Report ID: IR-2026-P101-04) Tj
+0 -20 Td
+(Equipment Tag: P-101 Transfer Pump) Tj
+0 -20 Td
+(Location: Crude Distillation Unit CDU-101) Tj
+0 -20 Td
+(Inspection Date: 2026-03-15) Tj
+0 -20 Td
+(Connected Process Line: 10-CDU-PL-101) Tj
+0 -20 Td
+(Original wall thickness = 5.0 mm) Tj
+0 -20 Td
+(Current wall thickness = 3.8 mm) Tj
+0 -20 Td
+(Inspection interval = 4 years) Tj
+0 -20 Td
+(Minimum allowable thickness = 3.2 mm) Tj
+0 -20 Td
+(Inspector: Senior PSU NDT Specialist) Tj
+0 -20 Td
+(Status: In Service - Ultrasonic Thickness Survey Complete) Tj
+ET
+
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 13 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 568 >>
+stream
+BT
+/F1 16 Tf
+50 750 Td
+(PROCESS & INSTRUMENTATION DIAGRAM - CDU-101-01) Tj
+/F1 12 Tf
+0 -30 Td
+(System: Crude Feed Boost & Transfer Section) Tj
+0 -20 Td
+(Equipment Identified: P-101, T-101) Tj
+0 -20 Td
+(Valves Identified: V-101, V-102, V-103) Tj
+0 -20 Td
+(Connected Process Line: 10-CDU-PL-101) Tj
+0 -20 Td
+(Flow direction = LEFT -> RIGHT) Tj
+0 -20 Td
+(Flow Path Connections: P-101 -> V-101 -> V-102 -> V-103 -> T-101) Tj
+0 -20 Td
+(Isolation Spec: V-101 Suction Gate, V-102 Check Valve, V-103 Discharge Globe) Tj
+0 -20 Td
+(Line Size: 10 inch Sch 40 Carbon Steel) Tj
+ET
+
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 8 0 R /Resources << /Font << /F1 13 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 435 >>
+stream
+BT
+/F1 16 Tf
+50 750 Td
+(PROCESS & INSTRUMENTATION DIAGRAM - CDU-101-02 AUXILIARY) Tj
+/F1 12 Tf
+0 -30 Td
+(System: Intermediate Storage & Rundown Section) Tj
+0 -20 Td
+(Equipment Identified: T-101 Storage Vessel) Tj
+0 -20 Td
+(Valves Identified: PSV-101, V-104) Tj
+0 -20 Td
+(Flow direction = TOP -> BOTTOM) Tj
+0 -20 Td
+(Flow Path Connections: T-101 -> V-104 -> Rundown Header) Tj
+0 -20 Td
+(Safety Relief: PSV-101 Set Point 14.5 bar) Tj
+ET
+
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 10 0 R /Resources << /Font << /F1 13 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 660 >>
+stream
+BT
+/F1 16 Tf
+50 750 Td
+(MRPL STANDARD OPERATING PROCEDURE & MAINTENANCE RULES) Tj
+/F1 12 Tf
+0 -30 Td
+(Document Ref: SOP-MRPL-MNT-2026) Tj
+0 -20 Td
+(1. Verify latest inspection record and wall thickness prior to overhaul.) Tj
+0 -20 Td
+(2. If current wall thickness is within 0.6 mm of minimum allowable limit, mandatory engineering review required.) Tj
+0 -20 Td
+(3. Verify isolation of V-101, V-102, and V-103 before line entry.) Tj
+0 -20 Td
+(4. Unresolved vibration findings exceeding 7.1 mm/s RMS require immediate trip assessment and maintenance closure.) Tj
+0 -20 Td
+(5. Confirm flow direction alignment from P-101 discharge to T-101 storage vessel.) Tj
+ET
+
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 12 0 R /Resources << /Font << /F1 13 0 R >> >> >>
+endobj
+12 0 obj
+<< /Length 523 >>
+stream
+BT
+/F1 16 Tf
+50 750 Td
+(MRPL INSPECTION SIGN-OFF & MATERIAL QA SHEET) Tj
+/F1 12 Tf
+0 -30 Td
+(Material Specification: ASTM A106 Grade B Carbon Steel) Tj
+0 -20 Td
+(Operating Pressure: 12.5 bar | Design Pressure: 15.0 bar) Tj
+0 -20 Td
+(Operating Temperature: 140 C) Tj
+0 -20 Td
+(Non-Destructive Testing Method: Pulse-Echo Ultrasonic Survey UT) Tj
+0 -20 Td
+(Review Gate: Human Engineering Review Mandatory for Critical High-Risk Operations) Tj
+0 -20 Td
+(Quality Sign-off: Approved by Chief Refinery Integrity Specialist) Tj
+ET
+
+endstream
+endobj
+13 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000146 00000 n 
+0000000273 00000 n 
+0000000981 00000 n 
+0000001108 00000 n 
+0000001727 00000 n 
+0000001854 00000 n 
+0000002340 00000 n 
+0000002468 00000 n 
+0000003180 00000 n 
+0000003309 00000 n 
+0000003884 00000 n 
+trailer
+<< /Size 14 /Root 1 0 R >>
+startxref
+3955
+%%EOF

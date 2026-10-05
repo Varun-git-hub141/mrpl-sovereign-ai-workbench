@@ -1,0 +1,61 @@
+models:
+  qwen2.5-coder:3b:
+    capabilities:
+      coding: 0.99
+      document_understanding: 0.78
+      general: 0.8
+      mathematics: 0.97
+      ocr: 0.05
+      reasoning: 0.85
+      tool_use: 0.85
+      vision: 0.05
+    display_name: Qwen 2.5 Coder 3B (Industrial Python/Scripting)
+    family: qwen2
+    hardware:
+      cpu_supported: true
+      estimated_vram_gb: 2.8
+      gpu_supported: true
+      required_ram_gb: 4.0
+    performance:
+      benchmark_score: 0.88
+      latency_score: 0.9
+  qwen2.5vl:3b:
+    capabilities:
+      coding: 0.45
+      document_understanding: 0.94
+      general: 0.82
+      mathematics: 0.75
+      ocr: 0.94
+      reasoning: 0.78
+      tool_use: 0.7
+      vision: 0.96
+    display_name: Qwen 2.5-VL 3B (P&ID & Visual Inspection Specialist)
+    family: qwen25vl
+    hardware:
+      cpu_supported: true
+      estimated_vram_gb: 4.0
+      gpu_supported: true
+      required_ram_gb: 6.0
+    performance:
+      benchmark_score: 0.86
+      latency_score: 0.7
+  qwen3:4b:
+    capabilities:
+      coding: 0.82
+      document_understanding: 0.92
+      general: 0.94
+      mathematics: 0.9
+      ocr: 0.05
+      reasoning: 0.95
+      tool_use: 0.88
+      vision: 0.05
+    display_name: Qwen 3 4B (Deep Reasoning & PSU Policy Engine)
+    family: qwen3
+    hardware:
+      cpu_supported: true
+      estimated_vram_gb: 3.5
+      gpu_supported: true
+      required_ram_gb: 6.0
+    performance:
+      benchmark_score: 0.92
+      latency_score: 0.75

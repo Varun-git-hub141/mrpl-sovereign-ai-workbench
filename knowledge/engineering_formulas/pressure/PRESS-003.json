@@ -1,0 +1,54 @@
+{
+  "formula_id": "PRESS-003",
+  "formula_name": "Pressure Head from Pressure and Density",
+  "category": "pressure",
+  "description": "Converts pressure in bar to equivalent head in meters of fluid column.",
+  "mathematical_expression": "Head = (pressure_bar * 100000) / (density * 9.80665)",
+  "formula": "(pressure_bar * 100000) / (density * 9.80665)",
+  "required_inputs": [
+    "pressure_bar",
+    "density"
+  ],
+  "optional_inputs": [],
+  "output": "head_meters",
+  "input_units": {
+    "pressure_bar": "bar",
+    "density": "kg/m3"
+  },
+  "output_units": {
+    "head_meters": "m"
+  },
+  "output_unit": "m",
+  "applicable_equipment_classes": [
+    "pump",
+    "piping"
+  ],
+  "applicable_component_classes": [
+    "suction_line",
+    "discharge_line"
+  ],
+  "applicability_conditions": [
+    "Liquid service"
+  ],
+  "applicability": [
+    "liquid pressure and density known"
+  ],
+  "non_applicability_conditions": [
+    "Gas or steam service"
+  ],
+  "not_applicable_when": [
+    "density <= 0"
+  ],
+  "assumptions": [
+    "Incompressible fluid"
+  ],
+  "input_validation_rules": [
+    "density > 0"
+  ],
+  "calculation_method": "deterministic_division",
+  "source_reference": "Hydraulic Institute Standards \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

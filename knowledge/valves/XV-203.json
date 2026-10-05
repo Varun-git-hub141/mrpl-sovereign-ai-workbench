@@ -1,0 +1,9 @@
+{
+  "tag": "XV-203",
+  "type": "gate_valve",
+  "description": "P-101 Suction Isolation Block Valve (12\" Class 150# Gate Valve)",
+  "normal_state": "NORMALLY_OPEN",
+  "function": "Positive suction isolation boundary for pump maintenance (Lockout/Tagout)",
+  "source": "Drawing CDU-P-101 Rev 2",
+  "version": "1.0.0"
+}

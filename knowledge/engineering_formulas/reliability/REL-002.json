@@ -1,0 +1,55 @@
+{
+  "formula_id": "REL-002",
+  "formula_name": "Operational Availability Percentage",
+  "category": "reliability",
+  "description": "Calculates uptime availability percentage comparing MTBF and MTTR.",
+  "mathematical_expression": "Availability_pct = (MTBF / (MTBF + MTTR)) * 100.0",
+  "formula": "(MTBF / (MTBF + MTTR)) * 100.0",
+  "required_inputs": [
+    "MTBF",
+    "MTTR"
+  ],
+  "optional_inputs": [],
+  "output": "availability_pct",
+  "input_units": {
+    "MTBF": "hours",
+    "MTTR": "hours"
+  },
+  "output_units": {
+    "availability_pct": "%"
+  },
+  "output_unit": "%",
+  "applicable_equipment_classes": [
+    "pump",
+    "compressor",
+    "unit"
+  ],
+  "applicable_component_classes": [
+    "equipment_system"
+  ],
+  "applicability_conditions": [
+    "MTBF > 0 and MTTR >= 0"
+  ],
+  "applicability": [
+    "both MTBF and MTTR established"
+  ],
+  "non_applicability_conditions": [
+    "MTBF <= 0"
+  ],
+  "not_applicable_when": [
+    "MTBF <= 0"
+  ],
+  "assumptions": [
+    "Inherent availability formula"
+  ],
+  "input_validation_rules": [
+    "MTBF > 0",
+    "MTTR >= 0"
+  ],
+  "calculation_method": "deterministic_ratio",
+  "source_reference": "ISO 14224 Standards \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}

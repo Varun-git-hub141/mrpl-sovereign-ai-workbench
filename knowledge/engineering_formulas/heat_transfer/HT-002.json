@@ -1,0 +1,56 @@
+{
+  "formula_id": "HT-002",
+  "formula_name": "Counter-Current Logarithmic Mean Temperature Difference (LMTD)",
+  "category": "heat_transfer",
+  "description": "Calculates effective logarithmic driving temperature force across counter-current heat exchanger.",
+  "mathematical_expression": "LMTD = (dT1 - dT2) / ln(dT1 / dT2)",
+  "formula": "(dT1 - dT2) / math.log(dT1 / dT2)",
+  "required_inputs": [
+    "dT1",
+    "dT2"
+  ],
+  "optional_inputs": [
+    "F_correction_factor"
+  ],
+  "output": "lmtd_C",
+  "input_units": {
+    "dT1": "C",
+    "dT2": "C"
+  },
+  "output_units": {
+    "lmtd_C": "C"
+  },
+  "output_unit": "C",
+  "applicable_equipment_classes": [
+    "heat_exchanger"
+  ],
+  "applicable_component_classes": [
+    "shell_and_tube_bundle"
+  ],
+  "applicability_conditions": [
+    "dT1 > 0 and dT2 > 0 and dT1 != dT2"
+  ],
+  "applicability": [
+    "hot/cold end temperature approaches available and positive"
+  ],
+  "non_applicability_conditions": [
+    "Temperature cross without multi-shell configuration",
+    "dT1 <= 0 or dT2 <= 0"
+  ],
+  "not_applicable_when": [
+    "dT1 <= 0 or dT2 <= 0"
+  ],
+  "assumptions": [
+    "Counter-current flow orientation, constant overall U"
+  ],
+  "input_validation_rules": [
+    "dT1 > 0",
+    "dT2 > 0"
+  ],
+  "calculation_method": "deterministic_lmtd",
+  "source_reference": "TEMA Standards / Kern Process Heat Transfer \u2014 Engineering reference / prototype knowledge - requires engineering validation.",
+  "version": "1.0.0",
+  "status": "VALIDATED",
+  "safety_critical": false,
+  "requires_human_review": false
+}
